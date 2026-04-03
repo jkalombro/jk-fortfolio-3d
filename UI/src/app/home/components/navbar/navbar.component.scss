@@ -1,4 +1,4 @@
-@use 'assets/styles/variables' as *;
+@use "assets/styles/variables" as *;
 
 .menu-toggle {
   display: flex;
@@ -31,6 +31,8 @@
     display: block;
     transition: color $transition-fast;
 
-    &:hover { color: $color-white; }
+    &:hover {
+      color: $color-white;
+    }
   }
 }
