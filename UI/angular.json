@@ -35,6 +35,11 @@
                 "glob": "**/*",
                 "input": "src/assets/styles",
                 "output": "/styles"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets/draco",
+                "output": "/draco"
               }
             ],
             "styles": [

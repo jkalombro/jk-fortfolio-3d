@@ -13,7 +13,7 @@
 
     @if (scene()) {
       <ngt-group [scale]="computerScale" [position]="computerPosition" [castShadow]="true">
-        <ngt-primitive [object]="scene()!" />
+        <ngt-primitive *args="[scene()!]" />
       </ngt-group>
     }
   </ng-template>

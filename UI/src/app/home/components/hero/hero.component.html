@@ -12,7 +12,7 @@
             Shaping
             <span class="slide">
               <span class="wrapper" aria-label="Ideas, Concepts, Designs, Code">
-                @for (word of words; track word.text) {
+                @for (word of words; track $index) {
                   <span class="word-item">
                     <img
                       [src]="word.imgPath"

@@ -47,7 +47,13 @@
       "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('exports', {}\\), indent=2\\)\\)\")",
       "Bash(node -e \"const m = require\\('d:/Repository/jk-fortfolio-3d/UI/node_modules/angular-three/fesm2022/angular-three-dom.mjs'\\); console.log\\(Object.keys\\(m\\)\\)\")",
       "Bash(npx jest:*)",
-      "Bash(ls d:/Repository/jk-fortfolio-3d/UI/jest.setup*)"
+      "Bash(ls d:/Repository/jk-fortfolio-3d/UI/jest.setup*)",
+      "Bash(grep -n \"NgtArgs\\\\|ngt-args\\\\|\\\\\\\\[args\\\\\\\\]\" d:/Repository/jk-fortfolio-3d/UI/node_modules/angular-three/fesm2022/angular-three.mjs)",
+      "Bash(npm show:*)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d['projects']['UI']['architect']['build']['options'].get\\('assets', d['projects']['UI']['architect']['build']['options']\\), indent=2\\)\\)\")",
+      "Bash(node -e \"const m = require\\('@angular-three/soba'\\); console.log\\(Object.keys\\(m\\).filter\\(k => /orbit|control/i.test\\(k\\)\\)\\)\")",
+      "Bash(node -e \"console.log\\(require.resolve\\('@angular-three/soba'\\)\\)\")",
+      "Bash(xargs cat:*)"
     ]
   }
 }

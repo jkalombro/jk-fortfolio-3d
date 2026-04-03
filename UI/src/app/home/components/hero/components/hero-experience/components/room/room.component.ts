@@ -4,22 +4,20 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
   computed,
 } from '@angular/core';
-import { extend, injectLoader } from 'angular-three';
+import { loaderResource, NgtArgs } from 'angular-three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { Group } from 'three';
-
-extend({ Group });
 
 @Component({
   selector: 'app-room',
   standalone: true,
+  imports: [NgtArgs],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     @if (scene()) {
       <ngt-primitive
-        [object]="scene()!"
-        [position]="[0.5, -1, 0]"
-        [scale]="[0.07, 0.07, 0.07]"
+        *args="[scene()!]"
+        [position]="[0.5, -1.5, 0]"
+        [scale]="[0.5, 0.5, 0.5]"
         [rotation]="[0, -Math.PI / 4, 0]"
       />
     }
@@ -29,15 +27,7 @@ extend({ Group });
 export class RoomComponent {
   protected readonly Math = Math;
 
-  private readonly gltf = injectLoader(
-    () => GLTFLoader,
-    () => '/models/optimized-room.glb',
-  );
+  private readonly gltf = loaderResource(() => GLTFLoader, () => '/models/optimized-room.glb');
 
-  readonly scene = computed(() => {
-    const s = this.gltf()?.scene ?? null;
-    if (s) console.log('Model loaded into scene:', s);
-
-    return s ?? null;
-  });
+  readonly scene = computed(() => this.gltf.value()?.scene ?? null);
 }

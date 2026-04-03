@@ -7,7 +7,7 @@
         <ngt-spot-light [position]="[10, 15, 10]" [angle]="0.3" [penumbra]="1" [intensity]="2" />
         @if (scene()) {
           <ngt-group [scale]="scale()" [rotation]="rotation()">
-            <ngt-primitive [object]="scene()!" />
+            <ngt-primitive *args="[scene()!]" />
           </ngt-group>
         }
       </ng-template>

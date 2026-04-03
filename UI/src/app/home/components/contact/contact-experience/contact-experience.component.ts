@@ -4,7 +4,7 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
   computed,
 } from '@angular/core';
-import { extend, injectLoader } from 'angular-three';
+import { extend, loaderResource, NgtArgs } from 'angular-three';
 import { NgtCanvasImpl, NgtCanvasContent } from 'angular-three/dom';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {
@@ -19,18 +19,15 @@ extend({ AmbientLight, DirectionalLight, PlaneGeometry, MeshStandardMaterial });
 @Component({
   selector: 'app-contact-experience',
   standalone: true,
-  imports: [NgtCanvasImpl, NgtCanvasContent],
+  imports: [NgtCanvasImpl, NgtCanvasContent, NgtArgs],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './contact-experience.component.html',
   styleUrl: './contact-experience.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactExperienceComponent {
-  private readonly gltf = injectLoader(
-    () => GLTFLoader,
-    () => '/models/computer-optimized.glb',
-  );
-  readonly scene = computed(() => this.gltf()?.scene ?? null);
+  private readonly gltf = loaderResource(() => GLTFLoader, () => '/models/computer-optimized.glb');
+  readonly scene = computed(() => this.gltf.value()?.scene ?? null);
 
   readonly planeGeomArgs: [number, number] = [30, 30];
   readonly floorRotation: [number, number, number] = [-Math.PI / 2, 0, 0];
