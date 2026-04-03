@@ -1,0 +1,25 @@
+<section class="hero">
+  <app-hero-header
+    icon="🏠"
+    title="Welcome Home"
+    subtitle="Your starting point for everything. Explore, build, and make it yours."
+  ></app-hero-header>
+
+  @if (loading()) {
+    <div class="hero__stats" aria-busy="true" aria-label="Loading stats">
+      @for (i of [1, 2, 3]; track i) {
+        <div class="stat-skeleton"></div>
+      }
+    </div>
+  } @else {
+    <div class="hero__cards">
+      @for (stat of stats(); track stat.label) {
+        <app-stat-card
+          [icon]="stat.icon"
+          [value]="stat.value"
+          [label]="stat.label"
+        ></app-stat-card>
+      }
+    </div>
+  }
+</section>
