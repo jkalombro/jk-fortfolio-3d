@@ -1,0 +1,49 @@
+<header
+  class="navbar"
+  [class.scrolled]="scrolled()"
+  [class.not-scrolled]="!scrolled()"
+  role="banner"
+>
+  <div class="inner">
+    <a href="#" class="logo" aria-label="Jk Alombro — home">JK</a>
+
+    <nav class="desktop" aria-label="Main navigation">
+      <ul role="list">
+        @for (link of navLinks; track link.name) {
+          <li>
+            <a [href]="link.link">{{ link.name }}</a>
+            <span class="underline" aria-hidden="true"></span>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <a href="#contact" class="contact-btn" aria-label="Contact Jk Alombro">
+      <div class="inner">
+        <span>Contact</span>
+      </div>
+    </a>
+
+    <button
+      class="menu-toggle"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen()"
+      aria-label="Toggle navigation menu"
+      aria-controls="mobile-menu"
+    >
+      <img src="/images/menu.svg" alt="" aria-hidden="true" width="24" height="24" />
+    </button>
+  </div>
+
+  @if (menuOpen()) {
+    <nav id="mobile-menu" class="mobile" aria-label="Mobile navigation">
+      <ul role="list">
+        @for (link of navLinks; track link.name) {
+          <li>
+            <a [href]="link.link" (click)="toggleMenu()">{{ link.name }}</a>
+          </li>
+        }
+      </ul>
+    </nav>
+  }
+</header>

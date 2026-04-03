@@ -1,0 +1,11 @@
+<div class="counters-wrapper padding-x">
+  @for (item of counterItems; track item.label; let i = $index) {
+    <div class="counter-item">
+      <div class="counter-number">
+        <span #counterVal class="counter-value">0</span>
+        <span class="counter-suffix">{{ item.suffix }}</span>
+      </div>
+      <p class="counter-label">{{ item.label }}</p>
+    </div>
+  }
+</div>

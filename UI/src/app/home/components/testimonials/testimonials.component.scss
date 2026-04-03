@@ -1,0 +1,64 @@
+@use 'assets/styles/variables' as *;
+
+.testimonials-section {
+  display: flex;
+  justify-content: center;
+  margin-top: $section-mt;
+}
+
+.testimonials-inner {
+  width: 100%;
+  padding: 0 1.25rem;
+
+  @media (min-width: $breakpoint-md) {
+    padding: 0 2.5rem;
+  }
+}
+
+.testimonials-grid {
+  margin-top: 4rem;
+  columns: 1;
+
+  @media (min-width: $breakpoint-md) {
+    columns: 2;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    columns: 3;
+  }
+}
+
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  img {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+.testimonial-name {
+  font-weight: 700;
+  color: $color-white;
+}
+
+.testimonial-mention {
+  color: $color-white-50;
+  font-size: $font-size-sm;
+}
+
+.testimonial-review {
+  color: $color-white-50;
+  font-size: $font-size-md;
+  line-height: 1.6;
+}

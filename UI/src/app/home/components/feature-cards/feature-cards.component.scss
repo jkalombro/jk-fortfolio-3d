@@ -1,0 +1,36 @@
+@use 'assets/styles/variables' as *;
+
+.feature-cards-section {
+  margin-top: $section-mt;
+}
+
+.ability-card {
+  border-radius: $radius-lg;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .ability-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-full;
+    background-color: $color-bg-card-mid;
+  }
+
+  h3 {
+    color: $color-white;
+    font-size: 1.5rem;
+    font-weight: $font-weight-semibold;
+    margin-top: 0.5rem;
+  }
+
+  p {
+    color: $color-white-50;
+    font-size: $font-size-md;
+    line-height: 1.6;
+  }
+}

@@ -1,0 +1,13 @@
+<section class="feature-cards-section padding-x-lg" aria-label="What I bring to the table">
+  <div class="grid-3-cols">
+    @for (ability of abilities; track ability.title) {
+      <article class="ability-card card-border">
+        <div class="ability-icon" aria-hidden="true">
+          <img [src]="ability.imgPath" [alt]="ability.title + ' icon'" width="40" height="40" />
+        </div>
+        <h3>{{ ability.title }}</h3>
+        <p>{{ ability.desc }}</p>
+      </article>
+    }
+  </div>
+</section>

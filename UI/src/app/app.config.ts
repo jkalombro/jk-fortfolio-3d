@@ -4,9 +4,8 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { provideNgtRenderer } from 'angular-three/dom';
 import { routes } from './app.routes';
-import { appReducers } from './store/reducers/index';
-import { UserEffects } from './store/effects/user.effects';
 import { authInterceptor } from './shared/interceptors/auth.interceptor';
 import { errorInterceptor } from './shared/interceptors/error.interceptor';
 
@@ -15,8 +14,9 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient(withInterceptors([authInterceptor, errorInterceptor])),
-    provideStore(appReducers),
-    provideEffects([UserEffects]),
+    provideStore({}),
+    provideEffects([]),
     provideStoreDevtools({ maxAge: 25, logOnly: false }),
+    provideNgtRenderer(),
   ],
 };

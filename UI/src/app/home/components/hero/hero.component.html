@@ -1,0 +1,53 @@
+<section id="hero" class="relative overflow-hidden">
+  <div class="absolute top-0 left-0" aria-hidden="true">
+    <img src="/images/bg.png" alt="" width="1920" height="1080" />
+  </div>
+
+  <div class="hero-layout">
+    <!-- LEFT: Hero Content -->
+    <header class="hero-header">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 #heading>
+            Shaping
+            <span class="slide">
+              <span class="wrapper" aria-label="Ideas, Concepts, Designs, Code">
+                @for (word of words; track word.text) {
+                  <span class="word-item">
+                    <img
+                      [src]="word.imgPath"
+                      [alt]="word.text + ' icon'"
+                      class="word-icon"
+                      width="40"
+                      height="40"
+                    />
+                    <span>{{ word.text }}</span>
+                  </span>
+                }
+              </span>
+            </span>
+          </h1>
+          <h1 #heading>into Real Projects</h1>
+          <h1 #heading>that Deliver Results</h1>
+        </div>
+
+        <p class="hero-bio">
+          Hi, I'm Jk Alombro, a developer with a passion for code.
+        </p>
+
+        <app-button
+          text="See My Work"
+          className="hero-cta"
+          id="counter"
+        />
+      </div>
+    </header>
+
+    <!-- RIGHT: 3D Model -->
+    <figure class="hero-3d-layout" aria-label="3D room model">
+      <app-hero-experience />
+    </figure>
+  </div>
+
+  <app-animated-counter />
+</section>

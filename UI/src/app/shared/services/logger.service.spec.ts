@@ -7,9 +7,13 @@ describe('LoggerService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(LoggerService);
-    spyOn(console, 'log').and.stub();
-    spyOn(console, 'warn').and.stub();
-    spyOn(console, 'error').and.stub();
+    jest.spyOn(console, 'log').mockImplementation(() => {});
+    jest.spyOn(console, 'warn').mockImplementation(() => {});
+    jest.spyOn(console, 'error').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
   });
 
   it('should be created', () => {

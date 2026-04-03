@@ -1,0 +1,16 @@
+@use 'assets/styles/variables' as *;
+
+.tech-stack-section {
+  display: flex;
+  justify-content: center;
+  margin-top: $section-mt;
+}
+
+.tech-stack-inner {
+  width: 100%;
+  padding: 0 1.25rem;
+
+  @media (min-width: $breakpoint-md) {
+    padding: 0 2.5rem;
+  }
+}

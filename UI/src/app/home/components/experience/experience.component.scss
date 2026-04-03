@@ -1,0 +1,95 @@
+@use 'assets/styles/variables' as *;
+
+.experience-section {
+  display: flex;
+  justify-content: center;
+  margin-top: $section-mt-md;
+}
+
+.experience-inner {
+  width: 100%;
+  padding: 0 1.25rem;
+
+  @media (min-width: $breakpoint-md) {
+    padding: 0 5rem;
+  }
+}
+
+.exp-cards-wrapper {
+  margin-top: 8rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
+  @media (min-width: $breakpoint-xl) {
+    gap: 8rem;
+  }
+}
+
+.exp-glow-col {
+  @media (min-width: $breakpoint-xl) {
+    width: 33.333%;
+  }
+}
+
+.exp-info-col {
+  @media (min-width: $breakpoint-xl) {
+    width: 66.666%;
+  }
+}
+
+.exp-info-inner {
+  display: flex;
+  align-items: flex-start;
+}
+
+.expText {
+  display: flex;
+  gap: 1.25rem;
+  position: relative;
+  z-index: 20;
+
+  @media (min-width: $breakpoint-md) {
+    gap: 2.5rem;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    gap: 5rem;
+  }
+}
+
+.exp-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.exp-title {
+  font-weight: $font-weight-semibold;
+  font-size: 1.875rem;
+  color: $color-white;
+}
+
+.exp-date {
+  margin: 1.25rem 0;
+  color: $color-white-50;
+}
+
+.exp-responsibilities-label {
+  color: #839cb5;
+  font-style: italic;
+}
+
+.exp-responsibilities {
+  list-style: disc;
+  margin-left: 1.25rem;
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  li {
+    font-size: 1.125rem;
+    color: $color-white-50;
+  }
+}

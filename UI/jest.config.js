@@ -1,7 +1,11 @@
 module.exports = {
   preset: 'jest-preset-angular',
-  setupFilesAfterFramework: ['<rootDir>/jest.setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   testPathPattern: '.*\\.spec\\.ts$',
+  transformIgnorePatterns: ['node_modules/(?!(.*\\.mjs$|angular-three|ngxtension))'],
+  moduleNameMapper: {
+    '^three/examples/jsm/(.*)$': '<rootDir>/src/__mocks__/three-examples.js',
+  },
   coverageThreshold: {
     global: {
       lines: 100,

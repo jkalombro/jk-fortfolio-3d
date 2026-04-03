@@ -1,0 +1,39 @@
+<section id="experience" class="experience-section padding-x-lg">
+  <div class="experience-inner">
+    <app-title-header title="Professional Work Experience" sub="💼 My Career Overview" />
+    <div class="exp-cards-wrapper">
+      @for (card of expCards; track card.title) {
+        <div class="exp-card-wrapper">
+          <div class="exp-glow-col">
+            <app-glow-card [card]="card">
+              <img [src]="card.imgPath" alt="exp-img" loading="lazy" />
+            </app-glow-card>
+          </div>
+          <div class="exp-info-col">
+            <div class="exp-info-inner">
+              <div class="timeline-wrapper">
+                <div class="timeline" #timeline></div>
+                <div class="gradient-line"></div>
+              </div>
+              <div class="expText" #expText>
+                <div class="timeline-logo">
+                  <img [src]="card.logoPath" alt="company logo" loading="lazy" />
+                </div>
+                <div class="exp-details">
+                  <h1 class="exp-title">{{ card.title }}</h1>
+                  <p class="exp-date">🗓️&nbsp;{{ card.date }}</p>
+                  <p class="exp-responsibilities-label">Responsibilities</p>
+                  <ul class="exp-responsibilities">
+                    @for (resp of card.responsibilities; track resp) {
+                      <li class="timeline-card" #timelineCard>{{ resp }}</li>
+                    }
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

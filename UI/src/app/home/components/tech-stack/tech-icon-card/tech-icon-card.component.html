@@ -1,0 +1,25 @@
+@if (hasModel()) {
+  <div class="tech-icon-canvas">
+    <ngt-canvas [camera]="{ position: [0, 0, 5], fov: 75 }" [shadows]="true">
+      <ng-template canvasContent>
+        <ngt-ambient-light [intensity]="0.3" />
+        <ngt-directional-light [position]="[5, 5, 5]" [intensity]="1" />
+        <ngt-spot-light [position]="[10, 15, 10]" [angle]="0.3" [penumbra]="1" [intensity]="2" />
+        @if (scene()) {
+          <ngt-group [scale]="scale()" [rotation]="rotation()">
+            <ngt-primitive [object]="scene()!" />
+          </ngt-group>
+        }
+      </ng-template>
+    </ngt-canvas>
+  </div>
+} @else if (hasImg()) {
+  <img
+    class="tech-icon-img"
+    [src]="icon().imgPath"
+    [alt]="icon().name"
+    width="64"
+    height="64"
+    loading="lazy"
+  />
+}

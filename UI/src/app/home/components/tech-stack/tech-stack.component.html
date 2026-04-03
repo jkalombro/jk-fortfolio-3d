@@ -1,0 +1,23 @@
+<div id="skills" class="tech-stack-section padding-x-lg" #skillsWrapper>
+  <div class="tech-stack-inner">
+    <app-title-header
+      title="How I Can Contribute & My Key Skills"
+      sub="🤝 What I Bring to the Table"
+    />
+    <div class="tech-grid">
+      @for (icon of techIcons; track icon.name) {
+        <div class="card-border tech-card overflow-hidden group">
+          <div class="tech-card-animated-bg"></div>
+          <div class="tech-card-content">
+            <div class="tech-icon-wrapper">
+              <app-tech-icon-card [icon]="icon" />
+            </div>
+            <div class="padding-x">
+              <p class="tech-card-name">{{ icon.name }}</p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+@use 'assets/styles/variables' as *;
+@use 'assets/styles/mixins' as *;
+
+.relative {
+  position: relative;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.top-0 { top: 0; }
+.left-0 { left: 0; }
+
+.hero-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  padding: 0 $section-padding-x;
+
+  @include respond-to(md) {
+    width: 100%;
+    padding: 0 $section-padding-x-lg;
+  }
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.word-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding-bottom: 0.5rem;
+
+  @include respond-to(md) {
+    gap: 0.75rem;
+  }
+}
+
+.word-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  object-fit: contain;
+  border-radius: $radius-full;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 0.25rem;
+
+  @include respond-to(md) {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.5rem;
+  }
+}
+
+.hero-bio {
+  color: $color-white-50;
+  font-size: $font-size-base;
+  position: relative;
+  z-index: 10;
+  pointer-events: none;
+
+  @include respond-to(md) {
+    font-size: $font-size-md;
+  }
+}
+
+.hero-cta {
+  width: 15rem;
+  height: 3rem;
+
+  @include respond-to(md) {
+    width: 20rem;
+    height: 4rem;
+  }
+}

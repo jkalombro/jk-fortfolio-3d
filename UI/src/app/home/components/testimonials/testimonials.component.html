@@ -1,0 +1,21 @@
+<section id="testimonials" class="testimonials-section padding-x-lg">
+  <div class="testimonials-inner">
+    <app-title-header title="What People Say About Me?" sub="⭐️ Customer feedback highlights" />
+    <div class="testimonials-grid">
+      @for (testimonial of testimonials; track testimonial.name; let i = $index) {
+        <app-glow-card [card]="testimonial" [index]="i">
+          <div class="testimonial-card">
+            <div class="testimonial-author">
+              <img [src]="testimonial.imgPath" [alt]="testimonial.name" width="48" height="48" loading="lazy" />
+              <div>
+                <p class="testimonial-name">{{ testimonial.name }}</p>
+                <p class="testimonial-mention">{{ testimonial.mentions }}</p>
+              </div>
+            </div>
+            <p class="testimonial-review">{{ testimonial.review }}</p>
+          </div>
+        </app-glow-card>
+      }
+    </div>
+  </div>
+</section>

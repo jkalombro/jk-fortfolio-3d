@@ -35,7 +35,19 @@
       "Bash(powershell.exe -File \".specify/scripts/powershell/update-agent-context.ps1\" -AgentType claude)",
       "Bash(powershell.exe -File \".specify/scripts/powershell/check-prerequisites.ps1\" -Json)",
       "Bash(powershell.exe -File \".specify/scripts/powershell/check-prerequisites.ps1\" -Json -RequireTasks -IncludeTasks)",
-      "Bash(powershell.exe -Command ':*)"
+      "Bash(powershell.exe -Command ':*)",
+      "Bash(sed -i 's/- \\\\[ \\\\] T012 Create TypeScript/- [x] T012 Create TypeScript/' \"d:/Repository/jk-fortfolio-3d/specs/main/tasks.md\")",
+      "Bash(sed -i 's/- \\\\[ \\\\] T013 \\\\[P\\\\] Create static/- [x] T013 [P] Create static/' \"d:/Repository/jk-fortfolio-3d/specs/main/tasks.md\")",
+      "Bash(npx tsc:*)",
+      "Bash(sed -i 's/- \\\\[ \\\\] T014/- [x] T014/' \"d:/Repository/jk-fortfolio-3d/specs/main/tasks.md\")",
+      "Bash(sed -i 's/- \\\\[ \\\\] T015/- [x] T015/' \"d:/Repository/jk-fortfolio-3d/specs/main/tasks.md\")",
+      "Bash(sed -i 's/- \\\\[ \\\\] T016/- [x] T016/' \"d:/Repository/jk-fortfolio-3d/specs/main/tasks.md\")",
+      "Bash(sed -i 's/- \\\\[ \\\\] T017/- [x] T017/' \"d:/Repository/jk-fortfolio-3d/specs/main/tasks.md\")",
+      "Bash(sed -i 's/- \\\\[ \\\\] T018/- [x] T018/' \"d:/Repository/jk-fortfolio-3d/specs/main/tasks.md\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('exports', {}\\), indent=2\\)\\)\")",
+      "Bash(node -e \"const m = require\\('d:/Repository/jk-fortfolio-3d/UI/node_modules/angular-three/fesm2022/angular-three-dom.mjs'\\); console.log\\(Object.keys\\(m\\)\\)\")",
+      "Bash(npx jest:*)",
+      "Bash(ls d:/Repository/jk-fortfolio-3d/UI/jest.setup*)"
     ]
   }
 }

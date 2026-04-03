@@ -1,0 +1,136 @@
+@use 'assets/styles/variables' as *;
+
+.contact-section {
+  display: flex;
+  justify-content: center;
+  margin-top: $section-mt;
+}
+
+.contact-inner {
+  width: 100%;
+  padding: 0 1.25rem;
+
+  @media (min-width: $breakpoint-md) {
+    padding: 0 2.5rem;
+  }
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 4rem;
+
+  @media (min-width: $breakpoint-xl) {
+    grid-template-columns: 5fr 7fr;
+  }
+}
+
+.contact-form-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-form-card {
+  width: 100%;
+  border-radius: $radius-lg;
+  padding: 2.5rem;
+}
+
+.contact-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    color: $color-white-50;
+    font-size: $font-size-sm;
+  }
+
+  input,
+  textarea {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: $radius-md;
+    padding: 0.75rem 1rem;
+    color: $color-white;
+    font-size: $font-size-md;
+    font-family: $font-family-base;
+    width: 100%;
+    outline: none;
+    resize: none;
+    transition: border-color 0.2s;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    &:focus {
+      border-color: $color-accent-amber;
+    }
+  }
+}
+
+.contact-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 0;
+  color: $color-white;
+  text-align: center;
+}
+
+.reset-btn {
+  background: transparent;
+  border: 1px solid $color-accent-amber;
+  color: $color-accent-amber;
+  border-radius: $radius-md;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  font-family: $font-family-base;
+  font-size: $font-size-md;
+
+  &:hover {
+    background: $color-accent-amber;
+    color: $color-bg-primary;
+  }
+}
+
+.contact-error {
+  color: #ef4444;
+  font-size: $font-size-sm;
+}
+
+.contact-scene-col {
+  min-height: 24rem;
+}
+
+.contact-scene-bg {
+  background-color: $color-accent-amber;
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+button[type='submit'] {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 100%;
+}

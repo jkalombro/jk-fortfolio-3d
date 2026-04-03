@@ -1,0 +1,80 @@
+<section id="contact" class="contact-section padding-x-lg">
+  <div class="contact-inner">
+    <app-title-header
+      title="Get in Touch – Let's Connect"
+      sub="💬 Have questions or ideas? Let's talk! 🚀"
+    />
+    <div class="contact-grid">
+      <div class="contact-form-col">
+        <div class="contact-form-card card-border">
+          @if (success()) {
+            <div class="contact-success">
+              <p>Message sent! I'll get back to you soon.</p>
+              <button type="button" class="reset-btn" (click)="reset()">Send another</button>
+            </div>
+          } @else {
+            <form class="contact-form" (ngSubmit)="onSubmit()">
+              <div class="form-field">
+                <label for="name">Your name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  [value]="form().name"
+                  (input)="updateField('name', $any($event.target).value)"
+                  placeholder="What's your good name?"
+                  required
+                />
+              </div>
+
+              <div class="form-field">
+                <label for="email">Your Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  [value]="form().email"
+                  (input)="updateField('email', $any($event.target).value)"
+                  placeholder="What's your email address?"
+                  required
+                />
+              </div>
+
+              <div class="form-field">
+                <label for="message">Your Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  [value]="form().message"
+                  (input)="updateField('message', $any($event.target).value)"
+                  placeholder="How can I help you?"
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+
+              @if (error()) {
+                <p class="contact-error">{{ error() }}</p>
+              }
+
+              <button type="submit" [disabled]="loading()">
+                <div class="cta-button group">
+                  <div class="bg-circle"></div>
+                  <p class="text">{{ loading() ? 'Sending...' : 'Send Message' }}</p>
+                  <div class="arrow-wrapper">
+                    <img src="/images/arrow-down.svg" alt="arrow" width="20" height="20" />
+                  </div>
+                </div>
+              </button>
+            </form>
+          }
+        </div>
+      </div>
+      <div class="contact-scene-col">
+        <div class="contact-scene-bg">
+          <app-contact-experience />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

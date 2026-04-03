@@ -44,35 +44,35 @@
 
 ### TypeScript Interfaces & Constants
 
-- [ ] T012 Create TypeScript interfaces in `src/app/shared/models/index.ts`: `NavLink`, `Word`, `CounterItem`, `LogoIcon`, `Ability`, `TechStackIcon`, `TechStackImg`, `ExpCard`, `ExpLogo`, `Testimonial`, `SocialImg`, `ContactForm` — exact shapes per `specs/main/data-model.md`
-- [ ] T013 [P] Create static constants in `src/app/shared/constants/index.ts`: `NAV_LINKS`, `WORDS`, `COUNTER_ITEMS`, `LOGO_ICONS_LIST`, `ABILITIES`, `TECH_STACK_ICONS` (Angular/TS/C#/.NET/Claude/React with dual modelPath/imgPath per data-model.md), `EXP_CARDS` (placeholder entries with "Jk Alombro" replacing "Adrian" in reviews), `EXP_LOGOS`, `TESTIMONIALS` (replace all "Adrian" references with "Jk Alombro"), `SOCIAL_IMGS`
+- [x] T012 Create TypeScript interfaces in `src/app/shared/models/index.ts`: `NavLink`, `Word`, `CounterItem`, `LogoIcon`, `Ability`, `TechStackIcon`, `TechStackImg`, `ExpCard`, `ExpLogo`, `Testimonial`, `SocialImg`, `ContactForm` — exact shapes per `specs/main/data-model.md`
+- [x] T013 [P] Create static constants in `src/app/shared/constants/index.ts`: `NAV_LINKS`, `WORDS`, `COUNTER_ITEMS`, `LOGO_ICONS_LIST`, `ABILITIES`, `TECH_STACK_ICONS` (Angular/TS/C#/.NET/Claude/React with dual modelPath/imgPath per data-model.md), `EXP_CARDS` (placeholder entries with "Jk Alombro" replacing "Adrian" in reviews), `EXP_LOGOS`, `TESTIMONIALS` (replace all "Adrian" references with "Jk Alombro"), `SOCIAL_IMGS`
 
 ### Shared Components (TDD)
 
-- [ ] T014 [P] Write tests first for `ButtonComponent` in `src/app/shared/components/button/button.component.spec.ts` — cover: renders label text, applies className input, sets id attribute, emits click
-- [ ] T015 [P] Create `ButtonComponent` in `src/app/shared/components/button/button.component.{ts,html,scss}` — standalone, OnPush, inputs: `text`, `className`, `id` (all via `input()`); CTA button with arrow icon
-- [ ] T016 [P] Write tests first for `TitleHeaderComponent` in `src/app/shared/components/title-header/title-header.component.spec.ts` — cover: renders title, renders sub text
-- [ ] T017 [P] Create `TitleHeaderComponent` in `src/app/shared/components/title-header/title-header.component.{ts,html,scss}` — standalone, OnPush, inputs: `title`, `sub`
-- [ ] T018 [P] Write tests first for `GlowCardComponent` in `src/app/shared/components/glow-card/glow-card.component.spec.ts` — cover: renders projected content, applies glow on mousemove, accepts card/index inputs
-- [ ] T019 [P] Create `GlowCardComponent` in `src/app/shared/components/glow-card/glow-card.component.{ts,html,scss}` — standalone, OnPush, inputs: `card`, `index`; `<ng-content>` projection; CSS radial glow tracks mouse position via `HostListener`
+- [x] T014 [P] Write tests first for `ButtonComponent` in `src/app/shared/components/button/button.component.spec.ts` — cover: renders label text, applies className input, sets id attribute, emits click
+- [x] T015 [P] Create `ButtonComponent` in `src/app/shared/components/button/button.component.{ts,html,scss}` — standalone, OnPush, inputs: `text`, `className`, `id` (all via `input()`); CTA button with arrow icon
+- [x] T016 [P] Write tests first for `TitleHeaderComponent` in `src/app/shared/components/title-header/title-header.component.spec.ts` — cover: renders title, renders sub text
+- [x] T017 [P] Create `TitleHeaderComponent` in `src/app/shared/components/title-header/title-header.component.{ts,html,scss}` — standalone, OnPush, inputs: `title`, `sub`
+- [x] T018 [P] Write tests first for `GlowCardComponent` in `src/app/shared/components/glow-card/glow-card.component.spec.ts` — cover: renders projected content, applies glow on mousemove, accepts card/index inputs
+- [x] T019 [P] Create `GlowCardComponent` in `src/app/shared/components/glow-card/glow-card.component.{ts,html,scss}` — standalone, OnPush, inputs: `card`, `index`; `<ng-content>` projection; CSS radial glow tracks mouse position via `HostListener`
 
 ### Email Service & Contact Store (TDD)
 
-- [ ] T020 Write tests first for `EmailService` in `src/app/shared/services/email.service.spec.ts` — cover: `send()` calls emailjs with correct params, returns Observable, handles rejection
-- [ ] T021 Create `EmailService` in `src/app/shared/services/email.service.ts` — `providedIn: 'root'`; `send(params: ContactForm): Observable<EmailJSResponseStatus>` wraps `emailjs.send()` via `from()`
-- [ ] T022 [P] Create `ContactState` model in `src/app/home/components/contact/store/models/contact-state.model.ts` — `{ loading: boolean, success: boolean, error: string | null }` with `initialContactState`
-- [ ] T023 [P] Create contact actions in `src/app/home/components/contact/store/actions/contact.actions.ts` — `submitForm({ params })`, `submitFormSuccess()`, `submitFormFailure({ error })`, `resetContactForm()`
-- [ ] T024 [P] Write tests first for contact reducer in `src/app/home/components/contact/store/reducers/contact.reducer.spec.ts` — cover all action transitions
-- [ ] T025 [P] Create contact reducer + selectors in `src/app/home/components/contact/store/reducers/contact.reducer.ts` — `contactReducer`, `selectContactLoading`, `selectContactSuccess`, `selectContactError`
-- [ ] T026 Write tests first for contact effects in `src/app/home/components/contact/store/effects/contact.effects.spec.ts` — cover: success path calls EmailService and dispatches success, failure path dispatches failure with error message
-- [ ] T027 Create contact effects in `src/app/home/components/contact/store/effects/contact.effects.ts` — `submitForm$` listens for `submitForm`, calls `EmailService.send()`, dispatches `submitFormSuccess` or `submitFormFailure`
+- [x] T020 Write tests first for `EmailService` in `src/app/shared/services/email.service.spec.ts` — cover: `send()` calls emailjs with correct params, returns Observable, handles rejection
+- [x] T021 Create `EmailService` in `src/app/shared/services/email.service.ts` — `providedIn: 'root'`; `send(params: ContactForm): Observable<EmailJSResponseStatus>` wraps `emailjs.send()` via `from()`
+- [x] T022 [P] Create `ContactState` model in `src/app/home/components/contact/store/models/contact-state.model.ts` — `{ loading: boolean, success: boolean, error: string | null }` with `initialContactState`
+- [x] T023 [P] Create contact actions in `src/app/home/components/contact/store/actions/contact.actions.ts` — `submitForm({ params })`, `submitFormSuccess()`, `submitFormFailure({ error })`, `resetContactForm()`
+- [x] T024 [P] Write tests first for contact reducer in `src/app/home/components/contact/store/reducers/contact.reducer.spec.ts` — cover all action transitions
+- [x] T025 [P] Create contact reducer + selectors in `src/app/home/components/contact/store/reducers/contact.reducer.ts` — `contactReducer`, `selectContactLoading`, `selectContactSuccess`, `selectContactError`
+- [x] T026 Write tests first for contact effects in `src/app/home/components/contact/store/effects/contact.effects.spec.ts` — cover: success path calls EmailService and dispatches success, failure path dispatches failure with error message
+- [x] T027 Create contact effects in `src/app/home/components/contact/store/effects/contact.effects.ts` — `submitForm$` listens for `submitForm`, calls `EmailService.send()`, dispatches `submitFormSuccess` or `submitFormFailure`
 
 ### App Shell & Home Feature
 
-- [ ] T028 Update `src/app/app.routes.ts` — `{ path: '', loadChildren: () => import('./home/home.routes').then(m => m.HOME_ROUTES) }`, `{ path: '**', redirectTo: '' }`
-- [ ] T029 [P] Update `src/app/app.component.{ts,html,scss}` — standalone, OnPush, just `<router-outlet />`; configure `app.config.ts` with `provideStore()`, `provideEffects()`, `provideRouter(routes)`, `provideHttpClient()`
-- [ ] T030 Create `src/app/home/home.routes.ts` — `HOME_ROUTES` with `{ path: '', component: HomeComponent, providers: [provideState('contact', contactReducer), provideEffects(ContactEffects)] }`
-- [ ] T031 Create `HomeComponent` shell in `src/app/home/home.component.{ts,html,scss}` — standalone, OnPush; template is a sequence of section component tags (filled in as each section is completed)
+- [x] T028 Update `src/app/app.routes.ts` — `{ path: '', loadChildren: () => import('./home/home.routes').then(m => m.HOME_ROUTES) }`, `{ path: '**', redirectTo: '' }`
+- [x] T029 [P] Update `src/app/app.component.{ts,html,scss}` — standalone, OnPush, just `<router-outlet />`; configure `app.config.ts` with `provideStore()`, `provideEffects()`, `provideRouter(routes)`, `provideHttpClient()`
+- [x] T030 Create `src/app/home/home.routes.ts` — `HOME_ROUTES` with `{ path: '', component: HomeComponent, providers: [provideState('contact', contactReducer), provideEffects(ContactEffects)] }`
+- [x] T031 Create `HomeComponent` shell in `src/app/home/home.component.{ts,html,scss}` — standalone, OnPush; template is a sequence of section component tags (filled in as each section is completed)
 
 **Checkpoint**: Foundation complete — all styles, interfaces, constants, shared components, and contact store are ready. User story work can now begin.
 
@@ -86,19 +86,19 @@
 
 ### Tests — User Story 1
 
-- [ ] T032 [P] [US1] Write tests first for `NavbarComponent` in `src/app/home/components/navbar/navbar.component.spec.ts` — cover: renders all NAV_LINKS, applies sticky class on scroll, mobile menu toggles, anchor hrefs are correct
-- [ ] T033 [P] [US1] Write tests first for `AnimatedCounterComponent` in `src/app/home/components/hero/components/animated-counter/animated-counter.component.spec.ts` — cover: renders COUNTER_ITEMS count, displays suffix, renders label
+- [x] T032 [P] [US1] Write tests first for `NavbarComponent` in `src/app/home/components/navbar/navbar.component.spec.ts` — cover: renders all NAV_LINKS, applies sticky class on scroll, mobile menu toggles, anchor hrefs are correct
+- [x] T033 [P] [US1] Write tests first for `AnimatedCounterComponent` in `src/app/home/components/hero/components/animated-counter/animated-counter.component.spec.ts` — cover: renders COUNTER_ITEMS count, displays suffix, renders label
 
 ### Implementation — User Story 1
 
-- [ ] T034 [US1] Create `NavbarComponent` in `src/app/home/components/navbar/navbar.component.{ts,html,scss}` — standalone, OnPush; reads `NAV_LINKS` constant; `@HostListener('window:scroll')` applies `.scrolled` class for glass effect; responsive hamburger menu toggled via `signal()`; uses `@for` for nav links
-- [ ] T035 [P] [US1] Create `AnimatedCounterComponent` in `src/app/home/components/hero/components/animated-counter/animated-counter.component.{ts,html,scss}` — standalone, OnPush; reads `COUNTER_ITEMS`; GSAP ScrollTrigger animates number from 0 to `value` on scroll; destroys trigger in `ngOnDestroy`
-- [ ] T036 [P] [US1] Create `HeroLightsComponent` in `src/app/home/components/hero/components/hero-experience/components/hero-lights/hero-lights.component.ts` — standalone, OnPush; NGT directional + ambient lights inside the scene
-- [ ] T037 [P] [US1] Create `ParticlesComponent` in `src/app/home/components/hero/components/hero-experience/components/particles/particles.component.ts` — standalone, OnPush; NGT particle system using `THREE.Points` with random positions
-- [ ] T038 [P] [US1] Create `RoomComponent` in `src/app/home/components/hero/components/hero-experience/components/room/room.component.ts` — standalone, OnPush; loads `optimized-room.glb` via `NgtLoader`; positions and scales the GLTF scene
-- [ ] T039 [US1] Create `HeroExperienceComponent` in `src/app/home/components/hero/components/hero-experience/hero-experience.component.{ts,html,scss}` — standalone, OnPush; wraps `ngt-canvas`; composes `HeroLightsComponent`, `ParticlesComponent`, `RoomComponent`; sets camera position
-- [ ] T040 [US1] Create `HeroComponent` in `src/app/home/components/hero/hero.component.{ts,html,scss}` — standalone, OnPush; reads `WORDS` constant for word-cycling slide (`@for`); GSAP `fromTo` animates `.hero-text h1` on `ngAfterViewInit`; includes `ButtonComponent`, `HeroExperienceComponent`, `AnimatedCounterComponent`; bio text "Hi, I'm Jk Alombro, a developer with a passion for code."
-- [ ] T041 [US1] Register `NavbarComponent` and `HeroComponent` in `HomeComponent` template (`src/app/home/home.component.html`)
+- [x] T034 [US1] Create `NavbarComponent` in `src/app/home/components/navbar/navbar.component.{ts,html,scss}` — standalone, OnPush; reads `NAV_LINKS` constant; `@HostListener('window:scroll')` applies `.scrolled` class for glass effect; responsive hamburger menu toggled via `signal()`; uses `@for` for nav links
+- [x] T035 [P] [US1] Create `AnimatedCounterComponent` in `src/app/home/components/hero/components/animated-counter/animated-counter.component.{ts,html,scss}` — standalone, OnPush; reads `COUNTER_ITEMS`; GSAP ScrollTrigger animates number from 0 to `value` on scroll; destroys trigger in `ngOnDestroy`
+- [x] T036 [P] [US1] Create `HeroLightsComponent` in `src/app/home/components/hero/components/hero-experience/components/hero-lights/hero-lights.component.ts` — standalone, OnPush; NGT directional + ambient lights inside the scene
+- [x] T037 [P] [US1] Create `ParticlesComponent` in `src/app/home/components/hero/components/hero-experience/components/particles/particles.component.ts` — standalone, OnPush; NGT particle system using `THREE.Points` with random positions
+- [x] T038 [P] [US1] Create `RoomComponent` in `src/app/home/components/hero/components/hero-experience/components/room/room.component.ts` — standalone, OnPush; loads `optimized-room.glb` via `NgtLoader`; positions and scales the GLTF scene
+- [x] T039 [US1] Create `HeroExperienceComponent` in `src/app/home/components/hero/components/hero-experience/hero-experience.component.{ts,html,scss}` — standalone, OnPush; wraps `ngt-canvas`; composes `HeroLightsComponent`, `ParticlesComponent`, `RoomComponent`; sets camera position
+- [x] T040 [US1] Create `HeroComponent` in `src/app/home/components/hero/hero.component.{ts,html,scss}` — standalone, OnPush; reads `WORDS` constant for word-cycling slide (`@for`); GSAP `fromTo` animates `.hero-text h1` on `ngAfterViewInit`; includes `ButtonComponent`, `HeroExperienceComponent`, `AnimatedCounterComponent`; bio text "Hi, I'm Jk Alombro, a developer with a passion for code."
+- [x] T041 [US1] Register `NavbarComponent` and `HeroComponent` in `HomeComponent` template (`src/app/home/home.component.html`)
 
 **Checkpoint**: Navbar and Hero are fully functional — 3D room renders, headline animates, counters count up on scroll.
 

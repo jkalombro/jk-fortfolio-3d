@@ -1,33 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { AppState } from './store/models/app-state.model';
-import { loadUser } from './store/actions/user.actions';
-import { selectUser } from './store/reducers/user.reducer';
-import { selectNotifications } from './store/reducers/app.reducer';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  imports: [RouterOutlet],
+  template: '<router-outlet />',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnInit {
-  // Public variables
-  readonly title = 'jk-portfolio';
-
-  // Private variables
-  private readonly store = inject(Store<AppState>);
-
-  // Public variables (signals)
-  readonly user = toSignal(this.store.select(selectUser));
-  readonly notifications = toSignal(this.store.select(selectNotifications), { initialValue: [] });
-
-  // Lifecycle methods
-  ngOnInit(): void {
-    this.store.dispatch(loadUser());
-  }
-}
+export class AppComponent {}

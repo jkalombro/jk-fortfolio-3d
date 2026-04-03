@@ -1,0 +1,43 @@
+@use 'assets/styles/variables' as *;
+
+.counters-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.counter-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 7rem;
+}
+
+.counter-number {
+  display: flex;
+  align-items: baseline;
+  gap: 0.125rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: $color-white;
+
+  @media (min-width: #{$breakpoint-md}) {
+    font-size: 2.5rem;
+  }
+}
+
+.counter-suffix {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $color-accent-amber;
+}
+
+.counter-label {
+  font-size: $font-size-sm;
+  color: $color-white-50;
+
+  @media (min-width: #{$breakpoint-md}) {
+    font-size: $font-size-base;
+  }
+}

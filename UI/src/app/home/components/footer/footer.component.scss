@@ -1,0 +1,17 @@
+// Footer styles are defined in global.scss (.footer, .footer-container, .socials, .icon)
+// Component-specific overrides only
+
+.footer-terms,
+.footer-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-copy {
+  text-align: center;
+
+  @media (min-width: 768px) {
+    text-align: end;
+  }
+}
