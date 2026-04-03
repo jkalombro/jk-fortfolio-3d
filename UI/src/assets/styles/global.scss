@@ -1,0 +1,853 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ─── Google Fonts ─────────────────────────────────────────────────────────────
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+
+// ─── CSS Custom Properties ────────────────────────────────────────────────────
+:root {
+  --gradient: #{$gradient-radial};
+}
+
+// ─── Reset & Base ─────────────────────────────────────────────────────────────
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100dvw;
+  overflow-x: hidden;
+  background-color: $color-bg-primary;
+  color: $color-white;
+  scroll-behavior: smooth;
+  font-family: $font-family-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 { margin: 0; }
+p { margin: 0; }
+ul { list-style: none; margin: 0; padding: 0; }
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+section {
+  width: 100dvw;
+}
+
+// ─── Layout Utilities ─────────────────────────────────────────────────────────
+.flex-center {
+  @include flex-center;
+}
+
+.flex-col-center {
+  @include flex-col-center;
+}
+
+.padding-x {
+  padding-left: $section-padding-x;
+  padding-right: $section-padding-x;
+
+  @include respond-to(md) {
+    padding-left: $section-padding-x-md;
+    padding-right: $section-padding-x-md;
+  }
+}
+
+.padding-x-lg {
+  padding-left: $section-padding-x;
+  padding-right: $section-padding-x;
+
+  @include respond-to(md) {
+    padding-left: $section-padding-x-lg;
+    padding-right: $section-padding-x-lg;
+  }
+}
+
+.section-padding {
+  @include section-padding;
+}
+
+// ─── Grid Utilities ───────────────────────────────────────────────────────────
+.grid-3-cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(xl) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.grid-12-cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+
+  @include respond-to(xl) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+// column spans for grid-12-cols
+.xl\:col-span-5 {
+  @include respond-to(xl) {
+    grid-column: span 5;
+  }
+}
+
+.xl\:col-span-7 {
+  @include respond-to(xl) {
+    grid-column: span 7;
+  }
+}
+
+// ─── Card Border ──────────────────────────────────────────────────────────────
+.card-border {
+  @include card-border;
+}
+
+// ─── Navbar ───────────────────────────────────────────────────────────────────
+.navbar {
+  position: fixed;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1.25rem $section-padding-x;
+  z-index: $navbar-z;
+  transition: all $transition-normal;
+
+  @include respond-to(md) {
+    padding: 1.25rem $section-padding-x-lg;
+  }
+
+  &.scrolled {
+    top: 0;
+    background-color: $color-bg-primary;
+  }
+
+  &.not-scrolled {
+    top: 0;
+    background-color: transparent;
+
+    @include respond-to(md) {
+      top: 2.5rem;
+    }
+  }
+
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    color: $color-white-50;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    transition: transform $transition-normal;
+
+    &:hover { transform: scale(1.05); }
+
+    @include respond-to(md) {
+      font-size: $font-size-xl;
+    }
+  }
+
+  nav.desktop {
+    display: none;
+
+    @include respond-to(lg) {
+      display: flex;
+      align-items: center;
+    }
+
+    ul {
+      display: flex;
+      gap: 2rem;
+
+      li {
+        color: $color-white-50;
+        position: relative;
+
+        a {
+          transition: color $transition-normal;
+
+          &:hover { color: $color-white; }
+        }
+
+        .underline {
+          position: absolute;
+          bottom: -0.25rem;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background-color: $color-white;
+          transition: width $transition-normal;
+        }
+
+        &:hover .underline { width: 100%; }
+      }
+    }
+  }
+
+  .contact-btn {
+    .inner {
+      padding: 0.5rem 1.25rem;
+      border-radius: $radius-md;
+      background-color: $color-white;
+      color: $color-bg-primary;
+      transition: background-color $transition-normal;
+
+      span {
+        transition: color $transition-normal;
+      }
+
+      &:hover {
+        background-color: $color-bg-card-dark;
+
+        span { color: $color-white; }
+      }
+    }
+  }
+}
+
+// ─── Hero Layout ──────────────────────────────────────────────────────────────
+.hero-layout {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 8rem;
+  height: 80vh;
+
+  @include respond-to(xl) {
+    margin-top: $section-mt;
+    height: 100dvh;
+    align-items: center;
+  }
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  position: relative;
+  z-index: 10;
+  pointer-events: none;
+
+  @include respond-to(md) {
+    font-size: $font-size-2xl;
+  }
+
+  img {
+    width: $icon-md;
+    height: $icon-md;
+    object-fit: contain;
+  }
+
+  .slide {
+    display: inline-block;
+    position: absolute;
+    padding: 1.875rem 0.5rem;
+    height: 3rem;
+    overflow: hidden;
+    transition: all cubic-bezier(0.71, 0.03, 0.34, 1);
+
+    @include respond-to(md) {
+      height: 4.875rem;
+      padding: 1.875rem 1.25rem;
+      transform: translateY(0.25rem);
+    }
+  }
+}
+
+.hero-3d-layout {
+  position: absolute;
+  top: 6rem;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 50vh;
+
+  @include respond-to(xl) {
+    width: 70%;
+    top: -5rem;
+    right: -5rem;
+  }
+}
+
+// ─── Word Slider (Hero) ───────────────────────────────────────────────────────
+.slide {
+  display: inline-block;
+  flex-direction: column;
+  transition: all cubic-bezier(0.71, 0.03, 0.34, 1);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  animation: wordSlider 21s infinite cubic-bezier(0.9, 0.01, 0.3, 0.99);
+}
+
+@keyframes wordSlider {
+  0%     { transform: translateY(0.5%); }
+  12.5%  { transform: translateY(-12.5%); }
+  25%    { transform: translateY(-25%); }
+  37.5%  { transform: translateY(-37.5%); }
+  50%    { transform: translateY(-50%); }
+  62.5%  { transform: translateY(-62.5%); }
+  75%    { transform: translateY(-75%); }
+  87.5%  { transform: translateY(-87.5%); }
+}
+
+// ─── CTA Button ───────────────────────────────────────────────────────────────
+.cta-wrapper {
+  position: relative;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.cta-button {
+  padding: 1rem;
+  border-radius: $radius-md;
+  background-color: $color-bg-card-mid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+
+  &:hover .bg-circle {
+    width: 2.5rem;
+    height: 2.5rem;
+    right: 2.5rem;
+  }
+
+  &:hover .text {
+    color: $color-white-50;
+    transform: translateX(-1.25rem);
+  }
+
+  &:hover .arrow-wrapper {
+    background-color: $color-white-50;
+
+    img {
+      transform: translateY(0);
+    }
+  }
+
+  .bg-circle {
+    position: absolute;
+    right: -2.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 120%;
+    height: 120%;
+    border-radius: $radius-full;
+    background-color: $color-white-50;
+    transition: all $transition-slow;
+    transform-origin: center;
+  }
+
+  .text {
+    text-transform: uppercase;
+    font-size: $font-size-base;
+    color: $color-bg-primary;
+    transition: all $transition-slow;
+    transform: translateX(-1.25rem);
+
+    @include respond-to(md) {
+      font-size: $font-size-md;
+    }
+
+    @include respond-to(xl) {
+      transform: translateX(0);
+    }
+  }
+
+  .arrow-wrapper {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: $radius-full;
+    position: absolute;
+    right: 2.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    @include flex-center;
+    overflow: hidden;
+
+    img {
+      width: 1.25rem;
+      height: 1.25rem;
+      transform: translateY(0);
+      animation: bounce 1s infinite;
+      transition: all $transition-slow;
+
+      @include respond-to(xl) {
+        transform: translateY(-8rem);
+      }
+    }
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+// ─── App Showcase ─────────────────────────────────────────────────────────────
+.app-showcase {
+  width: 100%;
+  margin-top: $section-mt;
+  padding: 2.5rem $section-padding-x;
+
+  @include respond-to(md) {
+    padding: $section-padding-x-lg $section-padding-x-lg;
+  }
+
+  .showcaselayout {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    justify-content: space-between;
+
+    @include respond-to(xl) {
+      flex-direction: row;
+    }
+  }
+
+  .first-project-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+    @include respond-to(xl) {
+      width: 60%;
+    }
+
+    .image-wrapper {
+      position: relative;
+      height: 24rem;
+
+      @include respond-to(md) {
+        height: 50vh;
+      }
+
+      @include respond-to(xl) {
+        height: 70vh;
+      }
+
+      img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: $radius-lg;
+      }
+    }
+
+    .text-content {
+      margin-top: 1.25rem;
+
+      h2 {
+        font-size: $font-size-lg;
+        font-weight: 700;
+
+        @include respond-to(md) {
+          font-size: $font-size-xl;
+        }
+
+        @include respond-to(lg) {
+          font-size: 2.25rem;
+        }
+      }
+    }
+  }
+
+  .project-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    overflow: hidden;
+
+    @include respond-to(md) {
+      flex-direction: row;
+    }
+
+    @include respond-to(xl) {
+      flex-direction: column;
+      width: 40%;
+    }
+
+    .image-wrapper {
+      position: relative;
+      border-radius: $radius-lg;
+      height: 16rem;
+      padding: 0;
+
+      @include respond-to(md) {
+        height: 13rem;
+      }
+
+      @include respond-to(lg) {
+        height: 18rem;
+      }
+
+      @include respond-to(xl) {
+        height: 37vh;
+        padding: 0 1.25rem;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: $radius-lg;
+    }
+
+    h2 {
+      font-size: $font-size-md;
+      font-weight: $font-weight-semibold;
+      margin-top: 1.25rem;
+
+      @include respond-to(md) {
+        font-size: $font-size-lg;
+      }
+
+      @include respond-to(xl) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+// ─── Marquee ──────────────────────────────────────────────────────────────────
+.marquee {
+  width: 100dvw;
+  overflow: hidden;
+  position: relative;
+  height: 13rem;
+}
+
+.marquee-box {
+  display: flex;
+  align-items: center;
+  width: 200%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  animation: marquee 60s linear infinite;
+}
+
+.marquee-item {
+  float: left;
+  width: 8rem;
+
+  @include respond-to(md) {
+    width: 10rem;
+  }
+}
+
+@keyframes marquee {
+  0%   { left: 0; }
+  100% { left: -100%; }
+}
+
+.gradient-edge {
+  width: 9rem;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  z-index: 20;
+
+  &:nth-of-type(1) {
+    left: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
+  }
+
+  &:nth-of-type(2) {
+    right: 0;
+    background: linear-gradient(-90deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
+  }
+}
+
+// ─── Timeline (Experience) ────────────────────────────────────────────────────
+.timeline-wrapper {
+  position: absolute;
+  top: 0;
+  left: 1.25rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+  @include respond-to(md) {
+    left: 2.5rem;
+  }
+
+  @include respond-to(xl) {
+    left: 35.5vw;
+  }
+}
+
+.timeline {
+  position: absolute;
+  z-index: 30;
+  height: 110%;
+  top: -2.5rem;
+  width: 3.5rem;
+  background-color: $color-bg-primary;
+
+  @include respond-to(md) {
+    width: 7rem;
+  }
+}
+
+.timeline-logo {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  border-radius: $radius-full;
+  @include flex-center;
+  @include card-border;
+
+  @include respond-to(md) {
+    width: 5rem;
+    height: 5rem;
+    transform: translateY(-1.75rem);
+  }
+}
+
+.exp-card-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2.5rem;
+  justify-content: space-between;
+
+  @include respond-to(xl) {
+    flex-direction: row;
+    gap: 5rem;
+  }
+}
+
+.gradient-line {
+  width: 2px;
+  background: $gradient-line;
+}
+
+// ─── Tech Stack ───────────────────────────────────────────────────────────────
+.tech-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: 4rem;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+
+  @include respond-to(xl) {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4rem;
+  }
+}
+
+.tech-card-animated-bg {
+  position: absolute;
+  left: 0;
+  bottom: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: $color-bg-card-mid;
+  transition: bottom $transition-slower;
+}
+
+.tech-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  cursor: grab;
+
+  @include respond-to(md) {
+    justify-content: center;
+  }
+
+  @include respond-to(xl) {
+    gap: 1.25rem;
+    height: 50vh;
+  }
+
+  p {
+    font-size: $font-size-md;
+    padding-bottom: 1.25rem;
+    font-weight: $font-weight-semibold;
+    color: $color-white-50;
+    text-align: center;
+
+    @include respond-to(xl) {
+      padding-bottom: 0;
+    }
+
+    @include respond-to(2xl) {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.tech-icon-wrapper {
+  @include flex-center;
+  width: 13rem;
+  height: 15rem;
+  position: relative;
+}
+
+// ─── Glow Card (card / before pseudo) ────────────────────────────────────────
+.card {
+  --start: 0;
+  position: relative;
+  z-index: 40;
+  overflow: hidden;
+  transition: border-color 1s ease-in-out;
+
+  &::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+    border: 2px solid transparent;
+    background: var(--gradient);
+    background-attachment: fixed;
+    mask: linear-gradient(#0000, #0000),
+      conic-gradient(
+        from calc((var(--start) - 15) * 1deg),
+        #ffffff1f 0deg,
+        white,
+        #ffffff00 100deg
+      );
+    mask-composite: intersect;
+    mask-clip: padding-box, border-box;
+    opacity: 0;
+    transition: $transition-slow ease;
+  }
+
+  &:hover::before { opacity: 1; }
+}
+
+.glow {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(10px) saturate(200);
+}
+
+// ─── Contact / Form ───────────────────────────────────────────────────────────
+form {
+  label {
+    display: block;
+    color: $color-white-50;
+    margin-bottom: 0.5rem;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 1rem;
+    font-size: $font-size-sm;
+    color: $color-white;
+    background-color: $color-bg-input;
+    border: none;
+    border-radius: $radius-sm;
+    outline: none;
+
+    &::placeholder { color: $color-accent-blue; }
+
+    @include respond-to(md) {
+      font-size: $font-size-base;
+    }
+  }
+}
+
+// ─── Footer ───────────────────────────────────────────────────────────────────
+.footer {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  color: $color-white-50;
+  padding: 0 $section-padding-x;
+  @include flex-center;
+
+  @include respond-to(md) {
+    margin-top: $section-mt;
+    padding: 0 $section-padding-x-lg;
+  }
+
+  .footer-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    width: 100%;
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+  }
+
+  p {
+    text-align: center;
+    cursor: pointer;
+
+    @include respond-to(md) {
+      text-align: start;
+    }
+  }
+
+  .socials {
+    @include flex-center;
+    gap: 1.25rem;
+
+    .icon {
+      @include card-border;
+      @include flex-center;
+      border-radius: $radius-lg;
+      width: 2.5rem;
+      height: 2.5rem;
+      cursor: pointer;
+      transition: background-color $transition-slow;
+
+      &:hover { background-color: $color-bg-card-dark; }
+
+      @include respond-to(md) {
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+  }
+}

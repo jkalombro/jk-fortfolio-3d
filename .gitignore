@@ -29,3 +29,14 @@ yarn-error.log*
 
 /.reference/
 /.scaffolding/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Temp / swap files
+*.tmp
+*.swp
+
+# Editor directories
+.idea/

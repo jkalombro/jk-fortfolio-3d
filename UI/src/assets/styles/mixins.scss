@@ -1,0 +1,59 @@
+@use 'variables' as *;
+
+// ─── Responsive Breakpoints ───────────────────────────────────────────────────
+@mixin respond-to($bp) {
+  @if $bp == md {
+    @media (min-width: #{$breakpoint-md}) { @content; }
+  } @else if $bp == lg {
+    @media (min-width: #{$breakpoint-lg}) { @content; }
+  } @else if $bp == xl {
+    @media (min-width: #{$breakpoint-xl}) { @content; }
+  } @else if $bp == 2xl {
+    @media (min-width: #{$breakpoint-2xl}) { @content; }
+  }
+}
+
+// ─── Layout Helpers ───────────────────────────────────────────────────────────
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin section-padding {
+  padding-left: $section-padding-x;
+  padding-right: $section-padding-x;
+  margin-top: $section-mt;
+
+  @include respond-to(md) {
+    padding-left: $section-padding-x-md;
+    padding-right: $section-padding-x-md;
+    margin-top: $section-mt-md;
+  }
+}
+
+// ─── Card Styles ──────────────────────────────────────────────────────────────
+@mixin card-border {
+  border: 1px solid $color-card-border;
+  background-color: $color-bg-card;
+}
+
+// ─── Scrollbar Hide ───────────────────────────────────────────────────────────
+@mixin hide-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+// ─── Text Truncate ────────────────────────────────────────────────────────────
+@mixin text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

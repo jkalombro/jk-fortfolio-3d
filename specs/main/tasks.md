@@ -19,13 +19,13 @@
 
 **Purpose**: Bootstrap the Angular project and prepare all external assets before any code is written.
 
-- [ ] T001 Run `/create-ui-app` to scaffold Angular 18+ standalone project at repository root (app name: `jk-portfolio`, style: SCSS, testing: Jest, linting: ESLint + Prettier)
-- [ ] T002 Install additional npm dependencies: `angular-three @angular-three/soba three @types/three gsap @emailjs/browser @ngrx/store @ngrx/effects @ngrx/store-devtools`
-- [ ] T003 [P] Copy all image assets from `.reference/3d-portfolio/public/images/` to `src/assets/images/`
-- [ ] T004 [P] Copy all 3D model assets from `.reference/3d-portfolio/public/models/` to `src/assets/models/`
-- [ ] T005 [P] Add tech stack logo SVGs to `src/assets/images/logos/` — download or create SVG icons for: `angular.svg`, `typescript.svg`, `csharp.svg`, `dotnet.svg`, `claude.svg`
-- [ ] T006 [P] Configure `angular.json` assets array to include `src/assets/images/` and `src/assets/models/` so they are served at `/images/` and `/models/` respectively
-- [ ] T007 [P] Create environment files `src/environments/environment.ts` and `src/environments/environment.prod.ts` with `emailjsServiceId`, `emailjsTemplateId`, `emailjsPublicKey` fields (empty strings as placeholders)
+- [x] T001 Run `/create-ui-app` to scaffold Angular 18+ standalone project at repository root (app name: `jk-portfolio`, style: SCSS, testing: Jest, linting: ESLint + Prettier)
+- [x] T002 Install additional npm dependencies: `angular-three @angular-three/soba three @types/three gsap @emailjs/browser @ngrx/store @ngrx/effects @ngrx/store-devtools`
+- [x] T003 [P] Copy all image assets from `.reference/3d-portfolio/public/images/` to `src/assets/images/`
+- [x] T004 [P] Copy all 3D model assets from `.reference/3d-portfolio/public/models/` to `src/assets/models/`
+- [x] T005 [P] Add tech stack logo SVGs to `src/assets/images/logos/` — download or create SVG icons for: `angular.svg`, `typescript.svg`, `csharp.svg`, `dotnet.svg`, `claude.svg`
+- [x] T006 [P] Configure `angular.json` assets array to include `src/assets/images/` and `src/assets/models/` so they are served at `/images/` and `/models/` respectively
+- [x] T007 [P] Create environment files `src/environments/environment.ts` and `src/environments/environment.prod.ts` with `emailjsServiceId`, `emailjsTemplateId`, `emailjsPublicKey` fields (empty strings as placeholders)
 
 ---
 
@@ -37,10 +37,10 @@
 
 ### Global Styles
 
-- [ ] T008 Create `src/assets/styles/variables.scss` — define all design tokens: `$color-bg-primary`, `$color-bg-card`, `$color-white`, `$color-white-50`, `$color-accent-amber: #cd7c2e`, `$color-accent-blue: #839cb5`, `$color-card-border`, `$breakpoint-md: 768px`, `$breakpoint-xl: 1280px`, `$section-padding-x`, `$section-padding-x-md`
-- [ ] T009 [P] Create `src/assets/styles/mixins.scss` — define mixins: `flex-center`, `section-padding`, `card-border`, `respond-to($bp)` for responsive media queries
-- [ ] T010 [P] Create `src/assets/styles/global.scss` — body reset, base typography, layout helper classes (`flex-center`, `grid-12-cols`, `grid-3-cols`, `padding-x`, `padding-x-lg`, `section-padding`), marquee animation keyframes, `.marquee`/`.marquee-box`/`.marquee-item` classes, `.card-border`, `.gradient-line`, `.glow-card` effect, hero layout classes (`hero-layout`, `hero-3d-layout`, `hero-text`, slide animation CSS), `.tech-grid`, `.app-showcase`, `.showcaselayout`, `.footer`/`.footer-container`/`.socials`
-- [ ] T011 Update `src/styles.scss` to `@use 'assets/styles/global'`
+- [x] T008 Create `src/assets/styles/variables.scss` — define all design tokens: `$color-bg-primary`, `$color-bg-card`, `$color-white`, `$color-white-50`, `$color-accent-amber: #cd7c2e`, `$color-accent-blue: #839cb5`, `$color-card-border`, `$breakpoint-md: 768px`, `$breakpoint-xl: 1280px`, `$section-padding-x`, `$section-padding-x-md`
+- [x] T009 [P] Create `src/assets/styles/mixins.scss` — define mixins: `flex-center`, `section-padding`, `card-border`, `respond-to($bp)` for responsive media queries
+- [x] T010 [P] Create `src/assets/styles/global.scss` — body reset, base typography, layout helper classes (`flex-center`, `grid-12-cols`, `grid-3-cols`, `padding-x`, `padding-x-lg`, `section-padding`), marquee animation keyframes, `.marquee`/`.marquee-box`/`.marquee-item` classes, `.card-border`, `.gradient-line`, `.glow-card` effect, hero layout classes (`hero-layout`, `hero-3d-layout`, `hero-text`, slide animation CSS), `.tech-grid`, `.app-showcase`, `.showcaselayout`, `.footer`/`.footer-container`/`.socials`
+- [x] T011 Update `src/styles.scss` to `@use 'assets/styles/global'`
 
 ### TypeScript Interfaces & Constants
 

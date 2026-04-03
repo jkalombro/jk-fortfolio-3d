@@ -1,0 +1,49 @@
+<div class="about">
+  <header class="about__header">
+    <span class="about__icon" aria-hidden="true">🧭</span>
+    <h1>About This App</h1>
+    <p>A sample Angular boilerplate built with structure, speed, and scalability in mind.</p>
+  </header>
+
+  <section class="about__timeline" aria-label="Project timeline">
+    <app-timeline-item
+      emoji="🎯"
+      title="Mission"
+      desc="Provide a clean, opinionated starting point for Angular projects — no clutter, just patterns that scale."
+    ></app-timeline-item>
+    <app-timeline-item
+      emoji="🏗️"
+      title="Architecture"
+      desc="Standalone components with lazy loading, NgRx for state, and SCSS for styling. Every layer has a clear responsibility."
+    ></app-timeline-item>
+    <app-timeline-item
+      emoji="🧪"
+      title="Quality"
+      desc="TDD-first approach. Every component ships with specs targeting 100% coverage from day one."
+    ></app-timeline-item>
+  </section>
+
+  <section class="about__team">
+    <h2>Meet the Team</h2>
+
+    @if (loading()) {
+      <div class="team-loading" aria-busy="true" aria-label="Loading team members">
+        @for (i of [1, 2, 3]; track i) {
+          <div class="team-skeleton"></div>
+        }
+      </div>
+    } @else {
+      <div class="team-grid">
+        @for (member of team(); track member.id) {
+          <app-team-card [member]="member"></app-team-card>
+        }
+      </div>
+    }
+  </section>
+
+  <section class="about__stack">
+    <app-tech-stack
+      [technologies]="['Angular', 'TypeScript', 'NgRx', 'SCSS', 'Jest']"
+    ></app-tech-stack>
+  </section>
+</div>
