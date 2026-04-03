@@ -13,20 +13,29 @@ import {
   PlaneGeometry,
   MeshStandardMaterial,
 } from 'three';
+import { OrbitControlsContactComponent } from './orbit-controls-contact.component';
 
 extend({ AmbientLight, DirectionalLight, PlaneGeometry, MeshStandardMaterial });
 
 @Component({
   selector: 'app-contact-experience',
   standalone: true,
-  imports: [NgtCanvasImpl, NgtCanvasContent, NgtArgs],
+  imports: [
+    NgtCanvasImpl,
+    NgtCanvasContent,
+    NgtArgs,
+    OrbitControlsContactComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './contact-experience.component.html',
   styleUrl: './contact-experience.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactExperienceComponent {
-  private readonly gltf = loaderResource(() => GLTFLoader, () => '/models/computer-optimized.glb');
+  private readonly gltf = loaderResource(
+    () => GLTFLoader,
+    () => '/models/computer-optimized.glb',
+  );
   readonly scene = computed(() => this.gltf.value()?.scene ?? null);
 
   readonly planeGeomArgs: [number, number] = [30, 30];

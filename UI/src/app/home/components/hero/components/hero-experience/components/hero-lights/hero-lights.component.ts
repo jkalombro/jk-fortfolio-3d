@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+} from '@angular/core';
 import { extend } from 'angular-three';
 import { AmbientLight, DirectionalLight, PointLight, SpotLight } from 'three';
 
@@ -9,12 +13,37 @@ extend({ AmbientLight, DirectionalLight, PointLight, SpotLight });
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <ngt-ambient-light [intensity]="0.05" />
-    <ngt-directional-light [position]="[5, 5, 5]" [intensity]="0.3" [castShadow]="true" />
-    <ngt-point-light [position]="[-5, 4, 3]" color="#4a6cf7" [intensity]="20" [distance]="25" />
-    <ngt-point-light [position]="[4, 3, -3]" color="#6b2fff" [intensity]="12" [distance]="20" />
-    <ngt-point-light [position]="[0, 5, 0]" color="#2255ff" [intensity]="8" [distance]="18" />
-    <ngt-spot-light [position]="[2, 8, 4]" [intensity]="2" color="#aaaaff" [penumbra]="1" [angle]="0.5" [castShadow]="true" />
+    <ngt-ambient-light [intensity]="0.2" color="#1a1a40" />
+
+    <ngt-directional-light
+      [position]="[5, 5, 5]"
+      [intensity]="0.3"
+      [castShadow]="true"
+    />
+
+    <ngt-spot-light
+      [position]="[4, 5, 4]"
+      [intensity]="40"
+      color="#4cc9f0"
+      [penumbra]="0.5"
+      [angle]="0.3"
+      [castShadow]="true"
+    />
+    <ngt-spot-light
+      [position]="[-3, 5, 5]"
+      [intensity]="60"
+      color="#9d4edd"
+      [penumbra]="1"
+      [angle]="0.4"
+      [castShadow]="true"
+    />
+
+    <ngt-point-light [position]="[0, 1, 0]" color="#7209b7" [intensity]="10" />
+    <ngt-point-light
+      [position]="[1, 2, -2]"
+      color="#0d00a4"
+      [intensity]="100"
+    />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

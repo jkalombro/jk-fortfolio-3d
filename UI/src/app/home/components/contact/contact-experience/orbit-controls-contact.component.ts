@@ -3,11 +3,11 @@ import { injectBeforeRender, injectStore } from 'angular-three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 @Component({
-  selector: 'app-orbit-controls',
+  selector: 'app-orbit-controls-contact',
   standalone: true,
   template: '',
 })
-export class OrbitControlsComponent implements OnDestroy {
+export class OrbitControlsContactComponent implements OnDestroy {
   private readonly store = injectStore();
   private readonly controls: OrbitControls;
 

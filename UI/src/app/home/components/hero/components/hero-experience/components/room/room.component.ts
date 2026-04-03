@@ -18,7 +18,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
         *args="[scene()!]"
         [position]="[0.5, -1.5, 0]"
         [scale]="[0.5, 0.5, 0.5]"
-        [rotation]="[0, -Math.PI / 4, 0]"
+        [rotation]="[-0.25, -Math.PI / 4, 0]"
       />
     }
   `,
@@ -27,7 +27,10 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 export class RoomComponent {
   protected readonly Math = Math;
 
-  private readonly gltf = loaderResource(() => GLTFLoader, () => '/models/optimized-room.glb');
+  private readonly gltf = loaderResource(
+    () => GLTFLoader,
+    () => '/models/optimized-room.glb',
+  );
 
   readonly scene = computed(() => this.gltf.value()?.scene ?? null);
 }
