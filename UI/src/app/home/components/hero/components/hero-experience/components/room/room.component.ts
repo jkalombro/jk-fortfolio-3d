@@ -34,5 +34,10 @@ export class RoomComponent {
     () => '/models/optimized-room.glb',
   );
 
-  readonly scene = computed(() => this.gltf()?.scene ?? null);
+  readonly scene = computed(() => {
+    const s = this.gltf()?.scene ?? null;
+    if (s) console.log('Model loaded into scene:', s);
+
+    return s ?? null;
+  });
 }

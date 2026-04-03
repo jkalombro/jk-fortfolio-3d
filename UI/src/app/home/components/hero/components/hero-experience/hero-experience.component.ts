@@ -7,13 +7,13 @@ import { HeroSceneComponent } from './hero-scene.component';
   standalone: true,
   imports: [NgtCanvasImpl, NgtCanvasContent, HeroSceneComponent],
   template: `
-    <ngt-canvas [camera]="{ position: [0, 0, 5], fov: 75 }" [shadows]="true">
+    <ngt-canvas [camera]="{ position: [0, 5, 15], fov: 75 }" [shadows]="true">
       <ng-template canvasContent>
         <app-hero-scene />
       </ng-template>
     </ngt-canvas>
   `,
-  styles: [':host { display: block; width: 100%; height: 100%; }'],
+  styles: [':host { display: block; width: 100%; height: 100vh; }'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroExperienceComponent {}

@@ -1,8 +1,18 @@
-import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA, computed } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  computed,
+} from '@angular/core';
 import { extend, injectLoader } from 'angular-three';
 import { NgtCanvasImpl, NgtCanvasContent } from 'angular-three/dom';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { AmbientLight, DirectionalLight, PlaneGeometry, MeshStandardMaterial } from 'three';
+import {
+  AmbientLight,
+  DirectionalLight,
+  PlaneGeometry,
+  MeshStandardMaterial,
+} from 'three';
 
 extend({ AmbientLight, DirectionalLight, PlaneGeometry, MeshStandardMaterial });
 
@@ -16,7 +26,10 @@ extend({ AmbientLight, DirectionalLight, PlaneGeometry, MeshStandardMaterial });
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactExperienceComponent {
-  private readonly gltf = injectLoader(() => GLTFLoader, () => '/models/computer.glb');
+  private readonly gltf = injectLoader(
+    () => GLTFLoader,
+    () => '/models/computer-optimized.glb',
+  );
   readonly scene = computed(() => this.gltf()?.scene ?? null);
 
   readonly planeGeomArgs: [number, number] = [30, 30];

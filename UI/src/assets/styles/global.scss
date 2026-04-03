@@ -1,8 +1,8 @@
-@use 'variables' as *;
-@use 'mixins' as *;
+@use "variables" as *;
+@use "mixins" as *;
 
 // ─── Google Fonts ─────────────────────────────────────────────────────────────
-@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
 
 // ─── CSS Custom Properties ────────────────────────────────────────────────────
 :root {
@@ -30,11 +30,32 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 { margin: 0; }
-p { margin: 0; }
-ul { list-style: none; margin: 0; padding: 0; }
-a { text-decoration: none; color: inherit; }
-img { display: block; max-width: 100%; }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
 
 section {
   width: 100dvw;
@@ -156,7 +177,9 @@ section {
     font-weight: $font-weight-semibold;
     transition: transform $transition-normal;
 
-    &:hover { transform: scale(1.05); }
+    &:hover {
+      transform: scale(1.05);
+    }
 
     @include respond-to(md) {
       font-size: $font-size-xl;
@@ -182,7 +205,9 @@ section {
         a {
           transition: color $transition-normal;
 
-          &:hover { color: $color-white; }
+          &:hover {
+            color: $color-white;
+          }
         }
 
         .underline {
@@ -195,7 +220,9 @@ section {
           transition: width $transition-normal;
         }
 
-        &:hover .underline { width: 100%; }
+        &:hover .underline {
+          width: 100%;
+        }
       }
     }
   }
@@ -215,7 +242,9 @@ section {
       &:hover {
         background-color: $color-bg-card-dark;
 
-        span { color: $color-white; }
+        span {
+          color: $color-white;
+        }
       }
     }
   }
@@ -297,20 +326,37 @@ section {
 }
 
 .wrapper {
+  margin-top: -28px !important;
   display: flex;
   flex-direction: column;
   animation: wordSlider 21s infinite cubic-bezier(0.9, 0.01, 0.3, 0.99);
 }
 
 @keyframes wordSlider {
-  0%     { transform: translateY(0.5%); }
-  12.5%  { transform: translateY(-12.5%); }
-  25%    { transform: translateY(-25%); }
-  37.5%  { transform: translateY(-37.5%); }
-  50%    { transform: translateY(-50%); }
-  62.5%  { transform: translateY(-62.5%); }
-  75%    { transform: translateY(-75%); }
-  87.5%  { transform: translateY(-87.5%); }
+  0% {
+    transform: translateY(0.5%);
+  }
+  12.5% {
+    transform: translateY(-12.5%);
+  }
+  25% {
+    transform: translateY(-25%);
+  }
+  37.5% {
+    transform: translateY(-37.5%);
+  }
+  50% {
+    transform: translateY(-50%);
+  }
+  62.5% {
+    transform: translateY(-62.5%);
+  }
+  75% {
+    transform: translateY(-75%);
+  }
+  87.5% {
+    transform: translateY(-87.5%);
+  }
 }
 
 // ─── CTA Button ───────────────────────────────────────────────────────────────
@@ -322,14 +368,17 @@ section {
 
 .cta-button {
   padding: 1rem;
-  border-radius: $radius-md;
-  background-color: $color-bg-card-mid;
+  border-radius: 0.8rem;
+  background-color: #282732;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   cursor: pointer;
   overflow: hidden;
+  width: 20vw;
+  min-width: 300px;
+  border: 0 !important;
 
   &:hover .bg-circle {
     width: 2.5rem;
@@ -393,8 +442,6 @@ section {
     img {
       width: 1.25rem;
       height: 1.25rem;
-      transform: translateY(0);
-      animation: bounce 1s infinite;
       transition: all $transition-slow;
 
       @include respond-to(xl) {
@@ -405,8 +452,13 @@ section {
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
 }
 
 // ─── App Showcase ─────────────────────────────────────────────────────────────
@@ -566,8 +618,12 @@ section {
 }
 
 @keyframes marquee {
-  0%   { left: 0; }
-  100% { left: -100%; }
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
+  }
 }
 
 .gradient-edge {
@@ -579,12 +635,20 @@ section {
 
   &:nth-of-type(1) {
     left: 0;
-    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
   }
 
   &:nth-of-type(2) {
     right: 0;
-    background: linear-gradient(-90deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(
+      -90deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
   }
 }
 
@@ -731,7 +795,7 @@ section {
 
   &::before {
     position: absolute;
-    content: '';
+    content: "";
     width: 100%;
     height: 100%;
     left: 50%;
@@ -741,7 +805,8 @@ section {
     border: 2px solid transparent;
     background: var(--gradient);
     background-attachment: fixed;
-    mask: linear-gradient(#0000, #0000),
+    mask:
+      linear-gradient(#0000, #0000),
       conic-gradient(
         from calc((var(--start) - 15) * 1deg),
         #ffffff1f 0deg,
@@ -754,7 +819,9 @@ section {
     transition: $transition-slow ease;
   }
 
-  &:hover::before { opacity: 1; }
+  &:hover::before {
+    opacity: 1;
+  }
 }
 
 .glow {
@@ -787,7 +854,9 @@ form {
     border-radius: $radius-sm;
     outline: none;
 
-    &::placeholder { color: $color-accent-blue; }
+    &::placeholder {
+      color: $color-accent-blue;
+    }
 
     @include respond-to(md) {
       font-size: $font-size-base;
@@ -842,7 +911,9 @@ form {
       cursor: pointer;
       transition: background-color $transition-slow;
 
-      &:hover { background-color: $color-bg-card-dark; }
+      &:hover {
+        background-color: $color-bg-card-dark;
+      }
 
       @include respond-to(md) {
         width: 3rem;
