@@ -29,13 +29,6 @@ export const WORDS: Word[] = [
   { text: 'Code', imgPath: '/images/code.svg' },
 ];
 
-export const COUNTER_ITEMS: CounterItem[] = [
-  { value: 15, suffix: '+', label: 'Years of Experience' },
-  { value: 200, suffix: '+', label: 'Satisfied Clients' },
-  { value: 108, suffix: '+', label: 'Completed Projects' },
-  { value: 90, suffix: '%', label: 'Client Retention Rate' },
-];
-
 export const LOGO_ICONS_LIST: LogoIcon[] = [
   { imgPath: '/images/logos/company-logo-1.png' },
   { imgPath: '/images/logos/company-logo-2.png' },
@@ -181,7 +174,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: 'Marvin McKinney',
     mentions: '@marvinmckinney',
     review:
-      'Jk Alombro was a pleasure to work with. He turned our outdated website into a fresh, intuitive platform that\'s both modern and easy to navigate. Fantastic work overall.',
+      "Jk Alombro was a pleasure to work with. He turned our outdated website into a fresh, intuitive platform that's both modern and easy to navigate. Fantastic work overall.",
     imgPath: '/images/client5.png',
   },
   {

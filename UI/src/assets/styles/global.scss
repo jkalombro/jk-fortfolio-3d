@@ -601,6 +601,7 @@ section {
 .marquee-box {
   display: flex;
   align-items: center;
+  gap: 50px;
   width: 200%;
   height: 100%;
   position: absolute;
@@ -613,7 +614,7 @@ section {
   width: 8rem;
 
   @include respond-to(md) {
-    width: 10rem;
+    width: 13rem;
   }
 }
 

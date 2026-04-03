@@ -6,12 +6,12 @@
     <div class="marquee-box">
       @for (icon of logoIcons; track $index) {
         <div class="marquee-item flex-center">
-          <img [src]="icon.imgPath" alt="Company logo" width="80" height="80" />
+          <img [src]="icon.imgPath" alt="Company logo" />
         </div>
       }
       @for (icon of logoIcons; track $index) {
         <div class="marquee-item flex-center" aria-hidden="true">
-          <img [src]="icon.imgPath" alt="" width="80" height="80" />
+          <img [src]="icon.imgPath" alt="" />
         </div>
       }
     </div>

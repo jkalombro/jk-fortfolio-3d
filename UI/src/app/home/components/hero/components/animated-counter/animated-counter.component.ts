@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { COUNTER_ITEMS } from '../../../../../shared/constants';
+import { CounterItem } from 'src/app/shared/models';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,7 +21,7 @@ gsap.registerPlugin(ScrollTrigger);
 })
 export class AnimatedCounterComponent implements AfterViewInit, OnDestroy {
   // Public variables
-  readonly counterItems = COUNTER_ITEMS;
+  readonly counterItems = this.getCounterItems();
 
   // Private variables
   private counterEls = viewChildren<ElementRef<HTMLSpanElement>>('counterVal');
@@ -51,5 +51,25 @@ export class AnimatedCounterComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.triggers.forEach((t) => t.kill());
+  }
+
+  private getCounterItems(): CounterItem[] {
+    return [
+      {
+        value: this.getYearsSince2016(),
+        suffix: '+',
+        label: 'Years of Experience',
+      },
+      { value: 200, suffix: '+', label: 'Satisfied Clients' },
+      { value: 108, suffix: '+', label: 'Completed Projects' },
+      { value: 90, suffix: '%', label: 'Client Retention Rate' },
+    ];
+  }
+
+  private getYearsSince2016(): number {
+    const currentYear: number = new Date().getFullYear();
+    const startYear: number = 2016;
+
+    return currentYear - startYear;
   }
 }

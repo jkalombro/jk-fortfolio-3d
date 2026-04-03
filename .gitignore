@@ -29,6 +29,7 @@ yarn-error.log*
 
 /.reference/
 /.scaffolding/
+/UI/.env
 
 # OS generated files
 .DS_Store
