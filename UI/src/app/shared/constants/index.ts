@@ -75,12 +75,6 @@ export const TECH_STACK_ICONS: TechStackIcon[] = [
     rotation: [0, 0, 0],
   },
   {
-    name: 'TypeScript Developer',
-    imgPath: '/images/logos/typescript.svg',
-    scale: 1,
-    rotation: [0, 0, 0],
-  },
-  {
     name: 'C# Developer',
     imgPath: '/images/logos/csharp.svg',
     scale: 1,
