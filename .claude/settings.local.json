@@ -30,7 +30,11 @@
       "Bash(python -c \"import sys,json; data=json.load\\(sys.stdin\\); pages=data['items']; last_page=pages[-1]; items=last_page['items'] if 'items' in last_page else []; print\\([i['catalogEntry']['version'] for i in items[-5:]]\\)\")",
       "Bash(dotnet msbuild:*)",
       "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\(k,v.get\\('type',''\\),v.get\\('compile',{}\\).keys\\(\\)\\) for k,v in d.get\\('targets',{}\\).get\\('.NETCoreApp,Version=v9.0',{}\\).items\\(\\) if 'Serilog' in k]\")",
-      "Bash(gh auth:*)"
+      "Bash(gh auth:*)",
+      "Bash(powershell.exe -File \".specify/scripts/powershell/setup-plan.ps1\" -Json)",
+      "Bash(powershell.exe -File \".specify/scripts/powershell/update-agent-context.ps1\" -AgentType claude)",
+      "Bash(powershell.exe -File \".specify/scripts/powershell/check-prerequisites.ps1\" -Json)",
+      "Bash(powershell.exe -File \".specify/scripts/powershell/check-prerequisites.ps1\" -Json -RequireTasks -IncludeTasks)"
     ]
   }
 }
