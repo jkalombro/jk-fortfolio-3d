@@ -19,8 +19,8 @@
 
       @if (hasImg() && texture()) {
         <ngt-mesh [rotation]="rotation()">
-          <ngt-plane-geometry *args="[3, 3]" />
-          <ngt-mesh-basic-material [map]="texture()!" [transparent]="true" />
+          <ngt-plane-geometry *args="[3.5, 3.5]" />
+          <ngt-mesh-basic-material [map]="texture()!" [transparent]="true" [side]="DoubleSide" />
         </ngt-mesh>
       }
     </ng-template>

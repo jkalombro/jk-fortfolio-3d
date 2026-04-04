@@ -1,10 +1,21 @@
-.tech-icon-canvas {
+:host {
+  display: block;
   width: 100%;
   height: 100%;
 }
 
-.tech-icon-img {
-  width: 4rem;
-  height: 4rem;
-  object-fit: contain;
+.tech-icon-canvas {
+  width: 100%;
+  height: 100%;
+  animation: float 3s ease-in-out infinite;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }

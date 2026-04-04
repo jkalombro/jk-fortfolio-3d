@@ -1,13 +1,10 @@
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   computed,
   effect,
-  inject,
   input,
-  NgZone,
   OnDestroy,
   signal,
 } from '@angular/core';
@@ -18,10 +15,12 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import {
   AmbientLight,
   DirectionalLight,
+  DoubleSide,
   Mesh,
   MeshBasicMaterial,
   PlaneGeometry,
   SpotLight,
+  Texture,
   TextureLoader,
 } from 'three';
 import type { TechStackIcon } from '../../../../shared/models';
@@ -37,21 +36,23 @@ extend({ AmbientLight, DirectionalLight, Mesh, MeshBasicMaterial, PlaneGeometry,
   styleUrl: './tech-icon-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TechIconCardComponent implements AfterViewInit, OnDestroy {
+export class TechIconCardComponent implements OnDestroy {
   readonly icon = input.required<TechStackIcon>();
 
   readonly hasModel = computed(() => !!this.icon().modelPath);
   readonly hasImg = computed(() => !this.icon().modelPath && !!this.icon().imgPath);
 
-  private readonly zone = inject(NgZone);
+  readonly DoubleSide = DoubleSide;
 
   private readonly _rotation = signal<[number, number, number]>([0, 0, 0]);
   readonly rotation = computed(() => this._rotation());
 
+  private readonly _texture = signal<Texture | null>(null);
+  readonly texture = computed(() => this._texture());
+
   private isDragging = false;
   private lastX = 0;
   private lastY = 0;
-  private rafId = 0;
 
   private readonly gltf = loaderResource(() => GLTFLoader, () => this.icon().modelPath ?? '', {
     extensions: (loader: GLTFLoader) => {
@@ -61,37 +62,25 @@ export class TechIconCardComponent implements AfterViewInit, OnDestroy {
     },
   });
 
-  private readonly textureResource = loaderResource(
-    () => TextureLoader,
-    () => this.icon().imgPath ?? '',
-  );
-
   readonly scene = computed(() => (this.hasModel() ? (this.gltf.value()?.scene ?? null) : null));
-  readonly texture = computed(() => (this.hasImg() ? (this.textureResource.value() ?? null) : null));
   readonly scale = computed(() => this.icon().scale);
 
   constructor() {
     effect(() => {
-      const base = this.icon().rotation as [number, number, number];
-      this._rotation.set([...base]);
+      this._rotation.set([...this.icon().rotation] as [number, number, number]);
     });
-  }
 
-  ngAfterViewInit(): void {
-    this.zone.runOutsideAngular(() => {
-      const animate = () => {
-        if (!this.isDragging) {
-          const [rx, ry, rz] = this._rotation();
-          this._rotation.set([rx, ry + 0.005, rz]);
-        }
-        this.rafId = requestAnimationFrame(animate);
-      };
-      this.rafId = requestAnimationFrame(animate);
+    effect(() => {
+      if (!this.hasImg() || !this.icon().imgPath) return;
+      const loader = new TextureLoader();
+      loader.load(this.icon().imgPath!, (tex) => {
+        this._texture.set(tex);
+      });
     });
   }
 
   ngOnDestroy(): void {
-    cancelAnimationFrame(this.rafId);
+    this._texture()?.dispose();
   }
 
   onPointerDown(event: PointerEvent): void {
