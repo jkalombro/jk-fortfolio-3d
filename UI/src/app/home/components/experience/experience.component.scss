@@ -80,6 +80,18 @@
   font-style: italic;
 }
 
+.exp-stars {
+  color: $color-white;
+  font-size: 1.25rem;
+  letter-spacing: 0.1em;
+}
+
+.exp-card-logo {
+  width: auto;
+  height: 2rem;
+  object-fit: contain;
+}
+
 .exp-responsibilities {
   list-style: disc;
   margin-left: 1.25rem;

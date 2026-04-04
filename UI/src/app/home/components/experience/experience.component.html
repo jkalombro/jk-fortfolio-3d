@@ -6,7 +6,8 @@
         <div class="exp-card-wrapper">
           <div class="exp-glow-col">
             <app-glow-card [card]="card">
-              <img [src]="card.imgPath" alt="exp-img" loading="lazy" />
+              <div class="exp-stars">★★★★★</div>
+              <img footer [src]="card.logoPath" alt="company logo" loading="lazy" class="exp-card-logo" />
             </app-glow-card>
           </div>
           <div class="exp-info-col">
