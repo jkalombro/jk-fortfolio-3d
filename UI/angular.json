@@ -40,8 +40,7 @@
                 "glob": "**/*",
                 "input": "src/assets/draco",
                 "output": "/draco"
-              },
-              "src/_redirects"
+              }
             ],
             "styles": [
               "src/styles.scss"
