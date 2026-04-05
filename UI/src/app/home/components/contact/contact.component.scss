@@ -8,11 +8,6 @@
 
 .contact-inner {
   width: 100%;
-  padding: 0 1.25rem;
-
-  @media (min-width: $breakpoint-md) {
-    padding: 0 2.5rem;
-  }
 }
 
 .contact-grid {
@@ -35,7 +30,11 @@
 .contact-form-card {
   width: 100%;
   border-radius: $radius-lg;
-  padding: 2.5rem;
+  padding: 2rem 1rem;
+
+  @media (min-width: $breakpoint-md) {
+    padding: 2.5rem;
+  }
 }
 
 .contact-form {
