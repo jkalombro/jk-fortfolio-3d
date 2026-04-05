@@ -3,6 +3,8 @@ import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   computed,
+  effect,
+  output,
 } from '@angular/core';
 import { loaderResource, NgtArgs } from 'angular-three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -27,10 +29,20 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 export class RoomComponent {
   protected readonly Math = Math;
 
+  readonly modelLoaded = output<void>();
+
   private readonly gltf = loaderResource(
     () => GLTFLoader,
-    () => '/models/optimized-room.glb',
+    () => '/models/game_room-optimized.glb',
   );
 
   readonly scene = computed(() => this.gltf.value()?.scene ?? null);
+
+  constructor() {
+    effect(() => {
+      if (this.scene()) {
+        this.modelLoaded.emit();
+      }
+    });
+  }
 }

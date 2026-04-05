@@ -13,37 +13,52 @@ extend({ AmbientLight, DirectionalLight, PointLight, SpotLight });
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <ngt-ambient-light [intensity]="0.2" color="#1a1a40" />
+    <!-- Base ambient: dim cool tone so the room doesn't go pitch-black -->
+    <ngt-ambient-light [intensity]="0.3" color="#1a1a2e" />
 
+    <!-- Key light: warm-white from front-right to reveal form -->
     <ngt-directional-light
-      [position]="[5, 5, 5]"
-      [intensity]="0.3"
+      [position]="[4, 6, 4]"
+      [intensity]="0.6"
+      color="#ffffff"
       [castShadow]="true"
     />
 
+    <!-- Monitor screen glow — cool blue-white from the front -->
     <ngt-spot-light
-      [position]="[4, 5, 4]"
-      [intensity]="40"
-      color="#4cc9f0"
-      [penumbra]="0.5"
-      [angle]="0.3"
-      [castShadow]="true"
-    />
-    <ngt-spot-light
-      [position]="[-3, 5, 5]"
+      [position]="[0, 2, 5]"
       [intensity]="60"
-      color="#9d4edd"
+      color="#a8d8ff"
       [penumbra]="1"
-      [angle]="0.4"
+      [angle]="0.45"
+      [castShadow]="false"
+    />
+
+    <!-- RGB accent — cyan from the right -->
+    <ngt-spot-light
+      [position]="[5, 4, 2]"
+      [intensity]="50"
+      color="#00f5d4"
+      [penumbra]="0.6"
+      [angle]="0.35"
       [castShadow]="true"
     />
 
-    <ngt-point-light [position]="[0, 1, 0]" color="#7209b7" [intensity]="10" />
-    <ngt-point-light
-      [position]="[1, 2, -2]"
-      color="#0d00a4"
-      [intensity]="100"
+    <!-- RGB accent — magenta/pink from the left -->
+    <ngt-spot-light
+      [position]="[-4, 4, 2]"
+      [intensity]="50"
+      color="#f72585"
+      [penumbra]="0.6"
+      [angle]="0.35"
+      [castShadow]="true"
     />
+
+    <!-- Under-desk RGB strip glow — purple -->
+    <ngt-point-light [position]="[0, -0.5, 0]" color="#7209b7" [intensity]="15" />
+
+    <!-- Ceiling/back fill — deep indigo to add depth -->
+    <ngt-point-light [position]="[0, 3, -3]" color="#3a0ca3" [intensity]="30" />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
