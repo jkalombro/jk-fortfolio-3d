@@ -48,9 +48,10 @@ describe('TechIconCardComponent', () => {
     expect(fixture.componentInstance.hasImg()).toBe(false);
   });
 
-  it('should expose hasImg as true when only imgPath is set', () => {
-    const imgIcon = TECH_STACK_ICONS.find((i) => i.imgPath && !i.modelPath);
-    fixture.componentRef.setInput('icon', imgIcon!);
+  it('should expose hasImg as true when only imgPath is set (non-SVG)', () => {
+    // All SVG paths hit hasSvg(); use a .png path to exercise hasImg
+    const pngIcon = { ...TECH_STACK_ICONS[0], modelPath: undefined, imgPath: '/images/logos/icon.png' };
+    fixture.componentRef.setInput('icon', pngIcon);
     fixture.detectChanges();
     expect(fixture.componentInstance.hasImg()).toBe(true);
     expect(fixture.componentInstance.hasModel()).toBe(false);
@@ -67,7 +68,7 @@ describe('TechIconCardComponent', () => {
 
       const canvasWrapper = fixture.debugElement.query(By.css('.tech-icon-canvas'));
       const el = canvasWrapper.nativeElement as HTMLElement;
-      jest.spyOn(el, 'setPointerCapture').mockImplementation(() => {});
+      // setPointerCapture is stubbed globally in jest.setup.ts
 
       el.dispatchEvent(new PointerEvent('pointerdown', { clientX: 100, clientY: 100, pointerId: 1 }));
       el.dispatchEvent(new PointerEvent('pointermove', { clientX: 120, clientY: 110, pointerId: 1 }));
@@ -85,7 +86,7 @@ describe('TechIconCardComponent', () => {
       const component = fixture.componentInstance;
       const canvasWrapper = fixture.debugElement.query(By.css('.tech-icon-canvas'));
       const el = canvasWrapper.nativeElement as HTMLElement;
-      jest.spyOn(el, 'setPointerCapture').mockImplementation(() => {});
+      // setPointerCapture is stubbed globally in jest.setup.ts
 
       el.dispatchEvent(new PointerEvent('pointerdown', { clientX: 100, clientY: 100, pointerId: 1 }));
       el.dispatchEvent(new PointerEvent('pointerup', { pointerId: 1 }));
@@ -104,7 +105,7 @@ describe('TechIconCardComponent', () => {
       const component = fixture.componentInstance;
       const canvasWrapper = fixture.debugElement.query(By.css('.tech-icon-canvas'));
       const el = canvasWrapper.nativeElement as HTMLElement;
-      jest.spyOn(el, 'setPointerCapture').mockImplementation(() => {});
+      // setPointerCapture is stubbed globally in jest.setup.ts
 
       el.dispatchEvent(new PointerEvent('pointerdown', { clientX: 100, clientY: 100, pointerId: 1 }));
       el.dispatchEvent(new PointerEvent('pointerleave', { pointerId: 1 }));

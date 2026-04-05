@@ -32,7 +32,7 @@ describe('TitleHeaderComponent', () => {
 
   it('should render the sub text', () => {
     setup({ title: 'Title', sub: '💼 My Career Overview' });
-    const subEl = fixture.debugElement.query(By.css('p'));
+    const subEl = fixture.debugElement.query(By.css('.sub-pill'));
     expect(subEl.nativeElement.textContent.trim()).toBe('💼 My Career Overview');
   });
 

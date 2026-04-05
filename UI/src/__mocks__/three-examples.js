@@ -11,4 +11,22 @@ class DRACOLoader {
   dispose() {}
 }
 
-module.exports = { GLTFLoader, DRACOLoader };
+class SVGLoader {
+  load(_url, onLoad) {
+    if (onLoad) onLoad({ paths: [] });
+  }
+  static createShapes() { return []; }
+}
+
+class OrbitControls {
+  enableDamping = false;
+  dampingFactor = 0;
+  enableZoom = true;
+  minPolarAngle = 0;
+  maxPolarAngle = Math.PI;
+  target = { set() {} };
+  update() {}
+  dispose() {}
+}
+
+module.exports = { GLTFLoader, DRACOLoader, SVGLoader, OrbitControls };

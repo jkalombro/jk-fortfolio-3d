@@ -5,6 +5,9 @@ module.exports = {
   transformIgnorePatterns: ['node_modules/(?!(.*\\.mjs$|angular-three|ngxtension))'],
   moduleNameMapper: {
     '^three/examples/jsm/(.*)$': '<rootDir>/src/__mocks__/three-examples.js',
+    '.*environments/environment$': '<rootDir>/src/__mocks__/environment.js',
+    '^angular-three$': '<rootDir>/src/__mocks__/angular-three.ts',
+    '^angular-three/dom$': '<rootDir>/src/__mocks__/angular-three.ts',
   },
   coverageThreshold: {
     global: {

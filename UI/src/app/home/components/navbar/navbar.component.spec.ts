@@ -43,8 +43,8 @@ describe('NavbarComponent', () => {
     expect(nav.nativeElement.classList).toContain('scrolled');
   });
 
-  it('should render logo text', () => {
-    const logo = fixture.debugElement.query(By.css('.logo'));
-    expect(logo.nativeElement.textContent.trim()).toBeTruthy();
+  it('should render logo image', () => {
+    const logoImg = fixture.debugElement.query(By.css('.logo img'));
+    expect(logoImg).toBeTruthy();
   });
 });
