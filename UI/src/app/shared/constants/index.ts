@@ -65,7 +65,7 @@ export const TECH_STACK_ICONS: TechStackIcon[] = [
   {
     name: 'React Developer',
     modelPath: '/models/react_logo-transformed.glb',
-    scale: 1,
+    scale: 0.8,
     rotation: [0, 0, 0],
   },
   {
@@ -81,10 +81,10 @@ export const TECH_STACK_ICONS: TechStackIcon[] = [
     rotation: [0, 0, 0],
   },
   {
-    name: '.NET Developer',
-    imgPath: '/images/logos/dotnet.svg',
-    scale: 1,
-    rotation: [0, 0, 0],
+    name: 'Node.js Developer',
+    modelPath: '/models/node-transformed.glb',
+    scale: 4,
+    rotation: [0, -Math.PI / 2, 0],
   },
   {
     name: 'Claude / AI',

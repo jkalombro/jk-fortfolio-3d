@@ -17,6 +17,12 @@
         </ngt-group>
       }
 
+      @if (hasSvg() && svgGroup()) {
+        <ngt-group [rotation]="rotation()">
+          <ngt-primitive *args="[svgGroup()!]" />
+        </ngt-group>
+      }
+
       @if (hasImg() && texture()) {
         <ngt-mesh [rotation]="rotation()">
           <ngt-plane-geometry *args="[3.5, 3.5]" />
