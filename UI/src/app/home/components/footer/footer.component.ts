@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { SOCIAL_IMGS } from '../../../shared/constants';
 
 @Component({
   selector: 'app-footer',
@@ -9,6 +8,5 @@ import { SOCIAL_IMGS } from '../../../shared/constants';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {
-  readonly socialImgs = SOCIAL_IMGS;
   readonly year = new Date().getFullYear();
 }
