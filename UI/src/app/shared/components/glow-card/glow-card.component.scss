@@ -12,6 +12,16 @@
   overflow: hidden;
   break-inside: avoid;
   margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.6s ease var(--slide-delay, 0ms),
+    transform 0.6s ease var(--slide-delay, 0ms);
+
+  &.slide-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   .review {
     color: $color-white-50;

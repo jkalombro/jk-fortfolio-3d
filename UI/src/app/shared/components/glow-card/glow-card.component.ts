@@ -1,8 +1,10 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
   HostListener,
+  OnDestroy,
   input,
   viewChild,
 } from '@angular/core';
@@ -15,11 +17,35 @@ import type { ExpCard, Testimonial } from '../../models';
   styleUrl: './glow-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GlowCardComponent {
+export class GlowCardComponent implements AfterViewInit, OnDestroy {
   card = input.required<ExpCard | Testimonial>();
   index = input<number>(0);
 
   private cardRef = viewChild<ElementRef<HTMLDivElement>>('cardEl');
+  private observer: IntersectionObserver | null = null;
+
+  ngAfterViewInit(): void {
+    const el = this.cardRef()?.nativeElement;
+    if (!el) return;
+
+    el.style.setProperty('--slide-delay', `${this.index() * 100}ms`);
+
+    this.observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add('slide-visible');
+          this.observer?.disconnect();
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    this.observer.observe(el);
+  }
+
+  ngOnDestroy(): void {
+    this.observer?.disconnect();
+  }
 
   @HostListener('mousemove', ['$event'])
   onMouseMove(event: MouseEvent): void {

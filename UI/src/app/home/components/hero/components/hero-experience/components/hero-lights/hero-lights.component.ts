@@ -2,8 +2,9 @@ import {
   ChangeDetectionStrategy,
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
+  OnDestroy,
 } from '@angular/core';
-import { extend } from 'angular-three';
+import { extend, injectStore } from 'angular-three';
 import { AmbientLight, DirectionalLight, PointLight, SpotLight } from 'three';
 
 extend({ AmbientLight, DirectionalLight, PointLight, SpotLight });
@@ -13,14 +14,14 @@ extend({ AmbientLight, DirectionalLight, PointLight, SpotLight });
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <!-- Base ambient: blue fill so walls are visible -->
-    <ngt-ambient-light [intensity]="1.2" color="#3366ff" />
+    <!-- Base ambient: bright blue fill -->
+    <ngt-ambient-light [intensity]="2.5" color="#4488ff" />
 
-    <!-- Key light: warm-white from front-right to reveal form -->
+    <!-- Key light: cool-blue tinted from front-right to reveal form -->
     <ngt-directional-light
       [position]="[4, 6, 4]"
-      [intensity]="0.6"
-      color="#ffffff"
+      [intensity]="1.2"
+      color="#99ccff"
       [castShadow]="true"
     />
 
@@ -62,4 +63,30 @@ extend({ AmbientLight, DirectionalLight, PointLight, SpotLight });
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeroLightsComponent {}
+export class HeroLightsComponent implements OnDestroy {
+  private readonly chairSpot = new SpotLight('#ffffff', 120);
+  private readonly store = injectStore();
+
+  constructor() {
+    const scene = this.store.snapshot.scene;
+
+    this.chairSpot.position.set(0.5, 3, 1.5);
+    this.chairSpot.angle = 0.25;
+    this.chairSpot.penumbra = 0.4;
+    this.chairSpot.distance = 8;
+    this.chairSpot.castShadow = true;
+
+    // Aim at the chair world position
+    this.chairSpot.target.position.set(0.5, -1.5, 0.5);
+
+    scene.add(this.chairSpot);
+    scene.add(this.chairSpot.target);
+  }
+
+  ngOnDestroy() {
+    const scene = this.store.snapshot.scene;
+    scene.remove(this.chairSpot.target);
+    scene.remove(this.chairSpot);
+    this.chairSpot.dispose();
+  }
+}
