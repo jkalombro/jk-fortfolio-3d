@@ -13,9 +13,8 @@ import type {
 
 export const NAV_LINKS: NavLink[] = [
   { name: 'Work', link: '#work' },
-  { name: 'Experience', link: '#experience' },
   { name: 'Skills', link: '#skills' },
-  { name: 'Testimonials', link: '#testimonials' },
+  { name: 'Experience', link: '#experience' },
 ];
 
 export const WORDS: Word[] = [

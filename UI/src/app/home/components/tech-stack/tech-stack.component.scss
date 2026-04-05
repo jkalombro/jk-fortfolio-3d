@@ -1,9 +1,9 @@
-@use 'assets/styles/variables' as *;
+@use "assets/styles/variables" as *;
 
 .tech-stack-section {
   display: flex;
   justify-content: center;
-  margin-top: $section-mt;
+  padding-top: $section-mt;
 }
 
 .tech-stack-inner {

@@ -6,7 +6,6 @@ import { LogoShowcaseComponent } from './components/logo-showcase/logo-showcase.
 import { FeatureCardsComponent } from './components/feature-cards/feature-cards.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { TechStackComponent } from './components/tech-stack/tech-stack.component';
-import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
 
@@ -21,7 +20,6 @@ import { FooterComponent } from './components/footer/footer.component';
     FeatureCardsComponent,
     ExperienceComponent,
     TechStackComponent,
-    TestimonialsComponent,
     ContactComponent,
     FooterComponent,
   ],

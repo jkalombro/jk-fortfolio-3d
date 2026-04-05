@@ -1,9 +1,9 @@
-@use 'assets/styles/variables' as *;
+@use "assets/styles/variables" as *;
 
 .experience-section {
   display: flex;
   justify-content: center;
-  margin-top: $section-mt-md;
+  padding-top: $section-mt-md;
 }
 
 .experience-inner {
