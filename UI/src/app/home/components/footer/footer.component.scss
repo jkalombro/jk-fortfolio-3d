@@ -1,5 +1,17 @@
-// Footer styles are defined in global.scss (.footer, .footer-container, .socials, .icon)
-// Component-specific overrides only
+@use "assets/styles/variables" as *;
+@use "assets/styles/mixins" as *;
+
+.footer {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  color: $color-white-50;
+  padding: 0 $section-padding-x;
+  @include flex-center;
+
+  p {
+    text-align: center;
+  }
+}
 
 .footer-terms,
 .footer-copy {

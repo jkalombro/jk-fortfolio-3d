@@ -27,8 +27,8 @@ import { HeroSceneComponent } from './hero-scene.component';
     </div>
   `,
   styles: [`
-    :host { display: block; width: 100%; height: 100%; min-height: 100vh; }
-    .scene-container { position: relative; width: 100%; height: 100%; min-height: 100vh; }
+    :host { display: block; width: 100%; height: 100%; }
+    .scene-container { position: relative; width: 100%; height: 100%; }
     ngt-canvas { display: block; width: 100%; height: 100%; }
 
     .loading-overlay {
