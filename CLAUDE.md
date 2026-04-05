@@ -56,13 +56,16 @@ src/
 ### Component Placement Rules
 
 1. **Child components belong inside the parent's folder.**
-   Any component created specifically for one parent component lives in a `components/` subfolder inside that parent's directory.
+   Any component created specifically for one parent component lives in a `components/` subfolder inside that parent's directory. The `components/` subfolder should only be created if the parent directory is a feature directory. Otherwise, just create the component directly inside the parent's directory without creating `components/` subfolder
 
 2. **Feature-level sharing → `<feature>/components/` shared folder.**
    If a component or service is used by more than one component within the same feature, move it to a `shared/` folder inside that feature folder.
 
 3. **Cross-feature sharing → `src/app/shared/`.**
    If a component, service, or helper is used across two or more features it must be moved into the global `shared/` folder. Standalone components are imported directly where needed — no SharedModule.
+
+4. **Stores folder management**
+   Shared states accross features should be declared inside `app/store/` folder. All states exclusive to features should be declared at `<feature>/store/`. There should be no other store folder created on component level.
 
 ## Standalone Components
 
@@ -102,7 +105,8 @@ For variables, functions, lifecycle methods, etc. Follow the arrangement below:
 - Always consider responsiveness. It should look good on all screens be it a pc, tablet, or mobile
 - All colors and constants should be defined on `src/assets/styles/variables.scss`
 - All shared mixins should be defined on `src/assets/styles/mixins.scss`
-- All global styles should be defined on `src/assets/styles/global.scss`
+- All re-used global styles should be defined on `src/assets/styles/global.scss`.
+- Absolutely no inline styling.
 
 ## Naming Conventions
 
