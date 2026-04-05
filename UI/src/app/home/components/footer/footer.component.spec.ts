@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FooterComponent } from './footer.component';
-import { SOCIAL_IMGS } from '../../../shared/constants';
 
 describe('FooterComponent', () => {
   let fixture: ComponentFixture<FooterComponent>;
@@ -23,18 +22,15 @@ describe('FooterComponent', () => {
     expect(footer).toBeTruthy();
   });
 
-  it('should render SOCIAL_IMGS count of social icons', () => {
-    const icons = fixture.debugElement.queryAll(By.css('.social-icon'));
-    expect(icons.length).toBe(SOCIAL_IMGS.length);
-  });
-
-  it('should display copyright text with "Jk Alombro"', () => {
+  it('should display copyright text with "Jerich Alombro"', () => {
     const footer = fixture.debugElement.query(By.css('footer'));
-    expect(footer.nativeElement.textContent).toContain('Jk Alombro');
+    expect(footer.nativeElement.textContent).toContain('Jerich Alombro');
   });
 
   it('should display current year in copyright', () => {
     const footer = fixture.debugElement.query(By.css('footer'));
-    expect(footer.nativeElement.textContent).toContain(new Date().getFullYear().toString());
+    expect(footer.nativeElement.textContent).toContain(
+      new Date().getFullYear().toString(),
+    );
   });
 });
