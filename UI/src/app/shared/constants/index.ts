@@ -41,8 +41,8 @@ export const LOGO_ICONS_LIST: LogoIcon[] = [
 export const ABILITIES: Ability[] = [
   {
     imgPath: '/images/seo.png',
-    title: 'Quality Focus',
-    desc: 'Delivering high-quality results while maintaining attention to every detail.',
+    title: 'Critical Thinker',
+    desc: 'I always do my best to analyze complex logic and data. I create algorithms to solve complex problems.',
   },
   {
     imgPath: '/images/chat.png',
@@ -51,8 +51,8 @@ export const ABILITIES: Ability[] = [
   },
   {
     imgPath: '/images/time.png',
-    title: 'On-Time Delivery',
-    desc: 'Making sure projects are completed on schedule, with quality & attention to detail.',
+    title: 'Learning Enthusiast',
+    desc: "I'm always seeking to improve my skills and willing to learn new things.",
   },
 ];
 

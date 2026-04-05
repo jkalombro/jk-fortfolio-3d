@@ -76,7 +76,16 @@
     &:focus {
       border-color: $color-accent-amber;
     }
+
+    &.input-error {
+      border-color: #ef4444;
+    }
   }
+}
+
+.field-error {
+  color: #ef4444;
+  font-size: $font-size-sm;
 }
 
 .contact-success {

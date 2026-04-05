@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { TitleHeaderComponent } from '../../../shared/components/title-header/title-header.component';
@@ -10,35 +10,55 @@ import {
   selectContactSuccess,
   selectContactError,
 } from './store/reducers/contact.reducer';
-import type { ContactForm } from '../../../shared/models';
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [TitleHeaderComponent, ContactExperienceComponent, FormsModule],
+  imports: [TitleHeaderComponent, ContactExperienceComponent, ReactiveFormsModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactComponent {
-  readonly form = signal<ContactForm>({ name: '', email: '', message: '' });
+  private readonly fb = inject(FormBuilder);
+  private readonly store = inject(Store);
+
+  readonly contactForm: FormGroup = this.fb.group({
+    name: ['', Validators.required],
+    email: ['', [Validators.required, Validators.pattern(EMAIL_REGEX)]],
+    message: ['', Validators.required],
+  });
+
+  readonly emailTouched = signal(false);
+
+  private readonly emailValue = toSignal(this.contactForm.get('email')!.valueChanges, {
+    initialValue: '',
+  });
+
+  readonly emailError = computed(() => {
+    if (!this.emailTouched()) return null;
+    this.emailValue(); // track value changes to recompute on input
+    const ctrl = this.contactForm.get('email')!;
+    if (ctrl.hasError('required')) return 'Email is required.';
+    if (ctrl.hasError('pattern')) return 'Please enter a valid email address.';
+    return null;
+  });
 
   readonly loading = toSignal(this.store.select(selectContactLoading), { initialValue: false });
   readonly success = toSignal(this.store.select(selectContactSuccess), { initialValue: false });
   readonly error = toSignal(this.store.select(selectContactError), { initialValue: null });
 
-  constructor(private readonly store: Store) {}
-
-  updateField(field: keyof ContactForm, value: string): void {
-    this.form.update((f) => ({ ...f, [field]: value }));
-  }
-
   onSubmit(): void {
-    this.store.dispatch(submitForm({ params: this.form() }));
+    this.emailTouched.set(true);
+    if (this.contactForm.invalid) return;
+    this.store.dispatch(submitForm({ params: this.contactForm.value }));
   }
 
   reset(): void {
-    this.form.set({ name: '', email: '', message: '' });
+    this.contactForm.reset();
+    this.emailTouched.set(false);
     this.store.dispatch(resetContactForm());
   }
 }

@@ -13,17 +13,15 @@
               <button type="button" class="reset-btn" (click)="reset()">Send another</button>
             </div>
           } @else {
-            <form class="contact-form" (ngSubmit)="onSubmit()">
+            <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
               <div class="form-field">
                 <label for="name">Your name</label>
                 <input
                   type="text"
                   id="name"
                   name="name"
-                  [value]="form().name"
-                  (input)="updateField('name', $any($event.target).value)"
+                  formControlName="name"
                   placeholder="What's your good name?"
-                  required
                 />
               </div>
 
@@ -33,11 +31,14 @@
                   type="email"
                   id="email"
                   name="email"
-                  [value]="form().email"
-                  (input)="updateField('email', $any($event.target).value)"
+                  formControlName="email"
                   placeholder="What's your email address?"
-                  required
+                  [class.input-error]="emailError()"
+                  (blur)="emailTouched.set(true)"
                 />
+                @if (emailError()) {
+                  <p class="field-error">{{ emailError() }}</p>
+                }
               </div>
 
               <div class="form-field">
@@ -45,11 +46,9 @@
                 <textarea
                   id="message"
                   name="message"
-                  [value]="form().message"
-                  (input)="updateField('message', $any($event.target).value)"
+                  formControlName="message"
                   placeholder="How can I help you?"
                   rows="5"
-                  required
                 ></textarea>
               </div>
 
