@@ -26,6 +26,14 @@ gsap.registerPlugin(ScrollTrigger);
 export class TechStackComponent implements AfterViewInit, OnDestroy {
   readonly techIcons = TECH_STACK_ICONS;
 
+  readonly floatVariants = [
+    { duration: '3s',   delay: '0s',    amplitude: '-12px' },
+    { duration: '4s',   delay: '0.7s',  amplitude: '-8px'  },
+    { duration: '2.8s', delay: '0.3s',  amplitude: '-15px' },
+    { duration: '3.5s', delay: '1.1s',  amplitude: '-10px' },
+    { duration: '5s',   delay: '0.5s',  amplitude: '-13px' },
+  ];
+
   @ViewChild('skillsWrapper') skillsWrapper!: ElementRef;
 
   private ctx!: gsap.Context;

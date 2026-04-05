@@ -10,7 +10,12 @@
           <div class="tech-card-animated-bg"></div>
           <div class="tech-card-content">
             <div class="tech-icon-wrapper">
-              <app-tech-icon-card [icon]="icon" />
+              <app-tech-icon-card
+                [icon]="icon"
+                [style.--float-duration]="floatVariants[$index % floatVariants.length].duration"
+                [style.--float-delay]="floatVariants[$index % floatVariants.length].delay"
+                [style.--float-amplitude]="floatVariants[$index % floatVariants.length].amplitude"
+              />
             </div>
             <div class="padding-x">
               <p class="tech-card-name">{{ icon.name }}</p>
