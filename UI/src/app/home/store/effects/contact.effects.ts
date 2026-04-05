@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap } from 'rxjs';
 import { submitForm, submitFormFailure, submitFormSuccess } from '../actions/contact.actions';
-import { EmailService } from '../../../../../shared/services/email.service';
+import { EmailService } from '../../../shared/services/email.service';
 
 @Injectable()
 export class ContactEffects {

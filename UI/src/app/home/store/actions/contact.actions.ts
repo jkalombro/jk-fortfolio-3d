@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import type { ContactForm } from '../../../../../shared/models';
+import type { ContactForm } from '../../../shared/models';
 
 export const submitForm = createAction(
   '[Contact] Submit Form',

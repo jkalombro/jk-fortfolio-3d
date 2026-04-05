@@ -8,8 +8,8 @@ import {
 } from '@angular/core';
 import gsap from 'gsap';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
-import { AnimatedCounterComponent } from './components/animated-counter/animated-counter.component';
-import { HeroExperienceComponent } from './components/hero-experience/hero-experience.component';
+import { AnimatedCounterComponent } from './animated-counter/animated-counter.component';
+import { HeroExperienceComponent } from './hero-experience/hero-experience.component';
 import { WORDS } from '../../../shared/constants';
 
 @Component({

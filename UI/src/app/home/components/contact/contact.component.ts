@@ -4,12 +4,12 @@ import { Store } from '@ngrx/store';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { TitleHeaderComponent } from '../../../shared/components/title-header/title-header.component';
 import { ContactExperienceComponent } from './contact-experience/contact-experience.component';
-import { submitForm, resetContactForm } from './store/actions/contact.actions';
+import { submitForm, resetContactForm } from '../../store/actions/contact.actions';
 import {
   selectContactLoading,
   selectContactSuccess,
   selectContactError,
-} from './store/reducers/contact.reducer';
+} from '../../store/reducers/contact.reducer';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

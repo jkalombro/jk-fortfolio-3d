@@ -3,7 +3,7 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable, of, throwError } from 'rxjs';
 import { Action } from '@ngrx/store';
 import { ContactEffects } from './contact.effects';
-import { EmailService } from '../../../../../shared/services/email.service';
+import { EmailService } from '../../../shared/services/email.service';
 import { submitForm, submitFormFailure, submitFormSuccess } from '../actions/contact.actions';
 
 describe('ContactEffects', () => {

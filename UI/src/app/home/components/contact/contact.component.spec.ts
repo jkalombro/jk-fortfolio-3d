@@ -2,8 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { ContactComponent } from './contact.component';
-import { selectContactLoading, selectContactSuccess, selectContactError } from './store/reducers/contact.reducer';
-import { submitForm } from './store/actions/contact.actions';
+import { selectContactLoading, selectContactSuccess, selectContactError } from '../../store/reducers/contact.reducer';
+import { submitForm } from '../../store/actions/contact.actions';
 
 describe('ContactComponent', () => {
   let fixture: ComponentFixture<ContactComponent>;

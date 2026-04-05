@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA, output } from '@angular/core';
-import { HeroLightsComponent } from './components/hero-lights/hero-lights.component';
-import { ParticlesComponent } from './components/particles/particles.component';
-import { RoomComponent } from './components/room/room.component';
-import { OrbitControlsComponent } from './components/orbit-controls/orbit-controls.component';
+import { HeroLightsComponent } from './hero-lights/hero-lights.component';
+import { ParticlesComponent } from './particles/particles.component';
+import { RoomComponent } from './room/room.component';
+import { OrbitControlsComponent } from './orbit-controls/orbit-controls.component';
 
 @Component({
   selector: 'app-hero-scene',

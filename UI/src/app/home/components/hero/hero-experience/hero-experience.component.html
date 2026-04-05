@@ -1,0 +1,17 @@
+<div class="scene-container">
+  @if (!isLoaded()) {
+    <div
+      #loadingOverlay
+      class="loading-overlay"
+      aria-busy="true"
+      aria-label="Loading 3D scene"
+    >
+      <div class="loader-ring"></div>
+    </div>
+  }
+  <ngt-canvas [camera]="{ position: [0, 2, 5], fov: 60 }" [shadows]="true">
+    <ng-template canvasContent>
+      <app-hero-scene (modelLoaded)="onModelLoaded()" />
+    </ng-template>
+  </ngt-canvas>
+</div>
