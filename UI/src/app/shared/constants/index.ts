@@ -12,7 +12,7 @@ import type {
 } from '../models';
 
 export const NAV_LINKS: NavLink[] = [
-  { name: 'Work', link: '#work' },
+  { name: 'About Me', link: '#about-me' },
   { name: 'Skills', link: '#skills' },
   { name: 'Experience', link: '#experience' },
 ];
@@ -86,7 +86,7 @@ export const TECH_STACK_ICONS: TechStackIcon[] = [
     rotation: [0, -Math.PI / 2, 0],
   },
   {
-    name: 'Claude / AI',
+    name: 'Claude Spec Developer',
     imgPath: '/images/logos/claude.svg',
     scale: 1,
     rotation: [0, 0, 0],

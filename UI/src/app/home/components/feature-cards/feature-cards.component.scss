@@ -1,7 +1,10 @@
-@use 'assets/styles/variables' as *;
+@use "assets/styles/variables" as *;
 
 .feature-cards-section {
-  margin-top: $section-mt;
+  display: flex;
+  flex-direction: column;
+  padding-top: 5rem;
+  gap: 4rem;
 }
 
 .ability-card {
