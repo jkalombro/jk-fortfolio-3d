@@ -53,7 +53,12 @@
       "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d['projects']['UI']['architect']['build']['options'].get\\('assets', d['projects']['UI']['architect']['build']['options']\\), indent=2\\)\\)\")",
       "Bash(node -e \"const m = require\\('@angular-three/soba'\\); console.log\\(Object.keys\\(m\\).filter\\(k => /orbit|control/i.test\\(k\\)\\)\\)\")",
       "Bash(node -e \"console.log\\(require.resolve\\('@angular-three/soba'\\)\\)\")",
-      "Bash(xargs cat:*)"
+      "Bash(xargs cat:*)",
+      "Bash(npm audit:*)",
+      "Bash(npm ls:*)",
+      "Bash(npm view:*)",
+      "Bash(npm test:*)",
+      "Bash(node -e \"const p = require\\('d:/Repository/jk-fortfolio-3d/UI/node_modules/jest-preset-angular/package.json'\\); console.log\\(JSON.stringify\\(p.exports, null, 2\\)\\)\")"
     ]
   }
 }
