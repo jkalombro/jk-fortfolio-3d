@@ -13,8 +13,8 @@ extend({ AmbientLight, DirectionalLight, PointLight, SpotLight });
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <!-- Base ambient: dim cool tone so the room doesn't go pitch-black -->
-    <ngt-ambient-light [intensity]="0.3" color="#1a1a2e" />
+    <!-- Base ambient: blue fill so walls are visible -->
+    <ngt-ambient-light [intensity]="1.2" color="#3366ff" />
 
     <!-- Key light: warm-white from front-right to reveal form -->
     <ngt-directional-light

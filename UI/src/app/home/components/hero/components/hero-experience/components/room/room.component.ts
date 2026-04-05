@@ -19,7 +19,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
       <ngt-primitive
         *args="[scene()!]"
         [position]="[0.5, -1.5, 0]"
-        [scale]="[0.5, 0.5, 0.5]"
+        [scale]="[0.8, 0.8, 0.8]"
         [rotation]="[-0.25, -Math.PI / 4, 0]"
       />
     }
