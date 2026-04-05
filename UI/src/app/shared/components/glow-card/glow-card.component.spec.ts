@@ -5,12 +5,17 @@ import { GlowCardComponent } from './glow-card.component';
 import type { ExpCard } from '../../models';
 
 const MOCK_CARD: ExpCard = {
+  companyName: 'Test Company',
   review: 'Great work!',
-  imgPath: '/images/exp1.png',
   logoPath: '/images/logo1.png',
-  title: 'Frontend Developer',
-  date: 'Jan 2023',
-  responsibilities: ['Built features'],
+  positions: [
+    {
+      title: 'Frontend Developer',
+      startDate: 'January 2023',
+      endDate: 'Present',
+      responsibilities: ['Built features'],
+    },
+  ],
 };
 
 @Component({

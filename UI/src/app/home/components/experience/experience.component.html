@@ -2,12 +2,11 @@
   <div class="experience-inner">
     <app-title-header title="Professional Work Experience" sub="💼 My Career Overview" />
     <div class="exp-cards-wrapper">
-      @for (card of expCards; track card.title) {
+      @for (card of expCards; track card.companyName) {
         <div class="exp-card-wrapper">
           <div class="exp-glow-col">
             <app-glow-card [card]="card">
-              <div class="exp-stars">★★★★★</div>
-              <img footer [src]="card.logoPath" alt="company logo" loading="lazy" class="exp-card-logo" />
+              <h3 class="exp-company-name">{{ card.companyName }}</h3>
             </app-glow-card>
           </div>
           <div class="exp-info-col">
@@ -18,17 +17,24 @@
               </div>
               <div class="expText" #expText>
                 <div class="timeline-logo">
-                  <img [src]="card.logoPath" alt="company logo" loading="lazy" />
+                  <img [src]="card.logoPath" [alt]="card.companyName + ' logo'" loading="lazy" />
                 </div>
                 <div class="exp-details">
-                  <h1 class="exp-title">{{ card.title }}</h1>
-                  <p class="exp-date">🗓️&nbsp;{{ card.date }}</p>
-                  <p class="exp-responsibilities-label">Responsibilities</p>
-                  <ul class="exp-responsibilities">
-                    @for (resp of card.responsibilities; track resp) {
-                      <li class="timeline-card" #timelineCard>{{ resp }}</li>
+                  @for (pos of card.positions; track pos.title; let last = $last) {
+                    <div class="exp-position">
+                      <h1 class="exp-title">{{ pos.title }}</h1>
+                      <p class="exp-date">🗓️&nbsp;{{ pos.startDate }} – {{ pos.endDate }} · {{ getDuration(pos.startDate, pos.endDate) }}</p>
+                      <p class="exp-responsibilities-label">Responsibilities</p>
+                      <ul class="exp-responsibilities">
+                        @for (resp of pos.responsibilities; track resp) {
+                          <li class="timeline-card" #timelineCard>{{ resp }}</li>
+                        }
+                      </ul>
+                    </div>
+                    @if (!last) {
+                      <hr class="position-divider" />
                     }
-                  </ul>
+                  }
                 </div>
               </div>
             </div>

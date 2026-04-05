@@ -95,42 +95,84 @@ export const TECH_STACK_ICONS: TechStackIcon[] = [
 
 export const EXP_CARDS: ExpCard[] = [
   {
+    companyName: 'AMCS Group',
     review:
-      'Jk Alombro brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.',
-    imgPath: '/images/exp1.png',
-    logoPath: '/images/logo1.png',
-    title: 'Frontend Developer',
-    date: 'January 2023 - Present',
-    responsibilities: [
-      'Developed and maintained user-facing features for the Hostinger website.',
-      'Collaborated closely with UI/UX designers to ensure seamless user experiences.',
-      'Optimized web applications for maximum speed and scalability.',
+      'A global leader in "Performance Sustainability" software and cloud-based solutions for waste, recycling, and resource-intensive industries.',
+    logoPath: '/images/amcs-logo.jpg',
+    positions: [
+      {
+        title: 'Senior Software Engineer',
+        startDate: 'March 2023',
+        endDate: 'Present',
+        responsibilities: [
+          "Maintain and develop new features for the company's ERP and plug-in applications.",
+          'Contribute to architectural decisions for various applications.',
+          'Guide co-developers through highly complex technical tasks.',
+        ],
+      },
     ],
   },
   {
+    companyName: 'TeraVault Software',
     review:
-      "Jk Alombro's contributions to Docker's web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
-    imgPath: '/images/exp2.png',
-    logoPath: '/images/logo2.png',
-    title: 'Full Stack Developer',
-    date: 'June 2020 - December 2023',
-    responsibilities: [
-      "Led the development of Docker's web applications, focusing on scalability.",
-      'Worked with backend engineers to integrate APIs seamlessly with the frontend.',
-      'Contributed to open-source projects that were used with the Docker ecosystem.',
+      'A venture builder and digital product agency specializing in transforming software ideas into scalable startups, operating as a technical co-founder and incubator.',
+    logoPath: '/images/teravault-logo.png',
+    positions: [
+      {
+        title: 'Senior Full Stack Software Developer',
+        startDate: 'May 2020',
+        endDate: 'March 2023',
+        responsibilities: [
+          'Managed the end-to-end software development process (Front-End to Back-End) for clients.',
+          'Conducted technical interviews for the developer hiring process.',
+          'Made key architectural decisions for company applications.',
+          'Designed databases and led junior developers on various projects.',
+        ],
+      },
     ],
   },
   {
+    companyName: 'FPT Software',
     review:
-      "Jk Alombro's work on Appwrite's mobile app brought a high level of quality and efficiency. He delivered solutions that enhanced our mobile experience & meet our product goals.",
-    imgPath: '/images/exp3.png',
-    logoPath: '/images/logo3.png',
-    title: 'React Native Developer',
-    date: 'March 2019 - May 2020',
-    responsibilities: [
-      "Built cross-platform mobile apps using React Native, integrating with Appwrite's backend services.",
-      'Improved app performance and user experience through code optimization and testing.',
-      'Coordinated with the product team to implement features based on feedback.',
+      'A global technology and IT services provider headquartered in Vietnam; a subsidiary of FPT Corporation. Focuses on digital transformation and IT consulting.',
+    logoPath: '/images/fpt-software-logo.png',
+    positions: [
+      {
+        title: 'Software Development Engineer',
+        startDate: 'March 2019',
+        endDate: 'May 2020',
+        responsibilities: [
+          'Developed software for global clients with a focus on ReactJS, TypeScript, and IoT.',
+          'Collaborated with the Firmware team to develop mobile and web interfaces for smart devices.',
+        ],
+      },
+    ],
+  },
+  {
+    companyName: 'GoodApps Inc.',
+    review:
+      'A FinTech subsidiary of Global Optimum Data Ventures; the carrier for the mobile platform "Goodkredit."',
+    logoPath: '/images/goodapps-logo.png',
+    positions: [
+      {
+        title: 'iOS/Software Developer',
+        startDate: 'May 2018',
+        endDate: 'March 2019',
+        responsibilities: [
+          'Developed iOS versions and back-end processes for company applications.',
+          'Developed and maintained APIs for corporate partners.',
+        ],
+      },
+      {
+        title: 'Software Developer',
+        startDate: 'December 2016',
+        endDate: 'March 2019',
+        responsibilities: [
+          'Full-stack website development and maintenance.',
+          'Developed back-end processes and integrated third-party APIs.',
+          'Managed a team of 5 OJTs and served as project lead.',
+        ],
+      },
     ],
   },
 ];

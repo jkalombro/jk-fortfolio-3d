@@ -27,6 +27,25 @@ gsap.registerPlugin(ScrollTrigger);
 export class ExperienceComponent implements AfterViewInit, OnDestroy {
   readonly expCards = EXP_CARDS;
 
+  getDuration(startDate: string, endDate: string): string {
+    const parseDate = (d: string): Date => {
+      if (d === 'Present') return new Date();
+      const [month, year] = d.split(' ');
+      return new Date(`${month} 1, ${year}`);
+    };
+
+    const start = parseDate(startDate);
+    const end = parseDate(endDate);
+    const totalMonths =
+      (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+    const years = Math.floor(totalMonths / 12);
+    const months = totalMonths % 12;
+
+    if (years === 0) return `${months} mo${months !== 1 ? 's' : ''}`;
+    if (months === 0) return `${years} yr${years !== 1 ? 's' : ''}`;
+    return `${years} yr${years !== 1 ? 's' : ''} ${months} mo${months !== 1 ? 's' : ''}`;
+  }
+
   @ViewChildren('timelineCard') timelineCards!: QueryList<ElementRef>;
   @ViewChildren('expText') expTexts!: QueryList<ElementRef>;
   @ViewChildren('timeline') timelines!: QueryList<ElementRef>;

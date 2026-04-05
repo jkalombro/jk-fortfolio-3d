@@ -23,30 +23,41 @@ describe('ExperienceComponent', () => {
     expect(section).toBeTruthy();
   });
 
-  it('should render EXP_CARDS count of timeline cards', () => {
+  it('should render EXP_CARDS count of card wrappers', () => {
     const cards = fixture.debugElement.queryAll(By.css('.exp-card-wrapper'));
     expect(cards.length).toBe(EXP_CARDS.length);
   });
 
-  it('should display title for each card', () => {
+  it('should display company name for each card', () => {
+    const names = fixture.debugElement.queryAll(By.css('.exp-company-name'));
+    EXP_CARDS.forEach((card, i) => {
+      expect(names[i].nativeElement.textContent.trim()).toBe(card.companyName);
+    });
+  });
+
+  it('should display title for each position', () => {
     const titles = fixture.debugElement.queryAll(By.css('.exp-title'));
-    EXP_CARDS.forEach((card, i) => {
-      expect(titles[i].nativeElement.textContent.trim()).toBe(card.title);
+    const allPositions = EXP_CARDS.flatMap((card) => card.positions);
+    allPositions.forEach((pos, i) => {
+      expect(titles[i].nativeElement.textContent.trim()).toBe(pos.title);
     });
   });
 
-  it('should display date for each card', () => {
+  it('should display date for each position', () => {
     const dates = fixture.debugElement.queryAll(By.css('.exp-date'));
-    EXP_CARDS.forEach((card, i) => {
-      expect(dates[i].nativeElement.textContent).toContain(card.date);
+    const allPositions = EXP_CARDS.flatMap((card) => card.positions);
+    allPositions.forEach((pos, i) => {
+      expect(dates[i].nativeElement.textContent).toContain(pos.startDate);
+      expect(dates[i].nativeElement.textContent).toContain(pos.endDate);
     });
   });
 
-  it('should render responsibilities for each card', () => {
+  it('should render responsibilities for each position', () => {
     const wrappers = fixture.debugElement.queryAll(By.css('.exp-responsibilities'));
-    EXP_CARDS.forEach((card, i) => {
+    const allPositions = EXP_CARDS.flatMap((card) => card.positions);
+    allPositions.forEach((pos, i) => {
       const items = wrappers[i].queryAll(By.css('li'));
-      expect(items.length).toBe(card.responsibilities.length);
+      expect(items.length).toBe(pos.responsibilities.length);
     });
   });
 });

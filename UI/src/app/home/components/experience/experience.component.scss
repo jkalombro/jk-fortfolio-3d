@@ -42,6 +42,23 @@
 .exp-info-inner {
   display: flex;
   align-items: flex-start;
+  position: relative;
+}
+
+.timeline-wrapper {
+  @media (min-width: $breakpoint-xl) {
+    left: 2.5rem;
+  }
+}
+
+.exp-card-wrapper:not(:last-child) {
+  .timeline-wrapper {
+    height: calc(100% + 2.5rem);
+
+    @media (min-width: $breakpoint-xl) {
+      height: calc(100% + 8rem);
+    }
+  }
 }
 
 .expText {
@@ -80,16 +97,20 @@
   font-style: italic;
 }
 
-.exp-stars {
-  color: $color-white;
+.exp-company-name {
+  font-weight: $font-weight-semibold;
   font-size: 1.25rem;
-  letter-spacing: 0.1em;
+  color: $color-white;
 }
 
-.exp-card-logo {
-  width: auto;
-  height: 2rem;
-  object-fit: contain;
+.exp-position + .exp-position {
+  margin-top: 2rem;
+}
+
+.position-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 2rem 0;
 }
 
 .exp-responsibilities {

@@ -37,13 +37,18 @@ export interface TechStackIcon {
   rotation: [number, number, number];
 }
 
-export interface ExpCard {
-  review: string;
-  imgPath: string;
-  logoPath: string;
+export interface ExpPosition {
   title: string;
-  date: string;
+  startDate: string;
+  endDate: string;
   responsibilities: string[];
+}
+
+export interface ExpCard {
+  companyName: string;
+  review: string;
+  logoPath: string;
+  positions: ExpPosition[];
 }
 
 export interface ExpLogo {

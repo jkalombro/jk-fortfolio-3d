@@ -689,8 +689,15 @@ section {
   height: 2.5rem;
   flex-shrink: 0;
   border-radius: $radius-full;
+  overflow: hidden;
   @include flex-center;
   @include card-border;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
   @include respond-to(md) {
     width: 5rem;
