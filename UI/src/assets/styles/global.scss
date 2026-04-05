@@ -308,12 +308,13 @@ section {
   top: 6rem;
   right: 0;
   width: 100%;
-  height: 100%;
-  min-height: 50vh;
+  height: 60vh;
   cursor: grab;
 
   @include respond-to(xl) {
     width: 70%;
+    height: 100%;
+    min-height: 50vh;
     top: -5rem;
     right: -5rem;
   }
