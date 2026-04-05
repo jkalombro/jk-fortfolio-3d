@@ -34,7 +34,7 @@ extend({ Points, PointsMaterial, BufferGeometry, BufferAttribute });
         />
       </ngt-buffer-geometry>
       <ngt-points-material
-        [size]="0.2"
+        [size]="0.1"
         [map]="particleTexture"
         [transparent]="true"
         [opacity]="0.8"
@@ -49,7 +49,7 @@ extend({ Points, PointsMaterial, BufferGeometry, BufferAttribute });
 })
 export class ParticlesComponent implements OnInit {
   readonly AdditiveBlending = AdditiveBlending;
-  readonly particleCount = 200;
+  readonly particleCount = 150;
   readonly positions = signal<Float32Array>(new Float32Array(0));
 
   // To match React's 'particles' useMemo, we store speeds here

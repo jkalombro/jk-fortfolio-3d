@@ -19,7 +19,7 @@ import { HeroSceneComponent } from './hero-scene.component';
           <div class="loader-ring"></div>
         </div>
       }
-      <ngt-canvas [camera]="{ position: [0, 3, 8], fov: 45 }" [shadows]="true">
+      <ngt-canvas [camera]="{ position: [0, 2, 5], fov: 60 }" [shadows]="true">
         <ng-template canvasContent>
           <app-hero-scene (modelLoaded)="onModelLoaded()" />
         </ng-template>
