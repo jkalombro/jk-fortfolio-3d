@@ -62,7 +62,7 @@ export class AnimatedCounterComponent implements AfterViewInit, OnDestroy {
       },
       { value: 1854, suffix: '', label: 'Reputations on Stackoverflow' },
       { value: 9000, suffix: '+', label: 'Motivation to code' },
-      { value: 100, suffix: '%', label: 'Client Satisfaction' },
+      { value: 95, suffix: '%', label: 'Client Satisfaction' },
     ];
   }
 

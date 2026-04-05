@@ -1,7 +1,6 @@
 <ngt-canvas [camera]="{ position: [0, 3, 7], fov: 45 }" [shadows]="true">
   <ng-template canvasContent>
-    <ngt-ambient-light [intensity]="0.5" color="#fff4e6" />
-    <ngt-directional-light [position]="[10, 2, 3]" [intensity]="2.5" color="#ffd9b3" [castShadow]="true" />
+    <app-contact-lights />
 
     <app-orbit-controls-contact />
 
@@ -13,7 +12,7 @@
     </ngt-group>
 
     @if (scene()) {
-      <ngt-group [scale]="computerScale" [position]="computerPosition" [castShadow]="true">
+      <ngt-group [scale]="computerScale" [position]="computerPosition">
         <ngt-primitive *args="[scene()!]" />
       </ngt-group>
     }
