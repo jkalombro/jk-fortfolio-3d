@@ -7,6 +7,8 @@ const mockControls = {
   enableZoom: true,
   minPolarAngle: 0,
   maxPolarAngle: Math.PI,
+  minAzimuthAngle: 0,
+  maxAzimuthAngle: 0,
   target: { set: jest.fn() },
   update: jest.fn(),
   dispose: jest.fn(),
@@ -47,6 +49,12 @@ describe('OrbitControlsComponent', () => {
     TestBed.createComponent(OrbitControlsComponent);
     expect(mockControls.enableZoom).toBe(false);
     expect(mockControls.enableDamping).toBe(true);
+  });
+
+  it('should restrict horizontal rotation to a front-facing range', () => {
+    TestBed.createComponent(OrbitControlsComponent);
+    expect(mockControls.minAzimuthAngle).toBe(-Math.PI / 4);
+    expect(mockControls.maxAzimuthAngle).toBe(Math.PI / 4);
   });
 
   it('should dispose controls on destroy', () => {

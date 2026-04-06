@@ -61,31 +61,31 @@ export const TECH_STACK_ICONS: TechStackIcon[] = [
     name: 'React Developer',
     modelPath: '/models/react_logo-transformed.glb',
     scale: 0.8,
-    rotation: [0, 0, 0],
+    rotation: [0.15, 0.3, -0.1],
   },
   {
     name: 'Angular Developer',
     imgPath: '/images/logos/angular.svg',
     scale: 1,
-    rotation: [0, 0, 0],
+    rotation: [-0.1, -0.25, 0.2],
   },
   {
     name: 'C# Developer',
     imgPath: '/images/logos/csharp.svg',
     scale: 1,
-    rotation: [0, 0, 0],
+    rotation: [0.2, 0.15, -0.2],
   },
   {
     name: 'Node.js Developer',
     modelPath: '/models/node-transformed.glb',
     scale: 4,
-    rotation: [0, -Math.PI / 2, 0],
+    rotation: [0.2, -Math.PI / 2, 0.15],
   },
   {
     name: 'Claude Spec Developer',
     imgPath: '/images/logos/claude.svg',
     scale: 1,
-    rotation: [0, 0, 0],
+    rotation: [-0.15, 0.35, 0.1],
   },
 ];
 

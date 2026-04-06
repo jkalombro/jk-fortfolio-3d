@@ -19,6 +19,8 @@ export class OrbitControlsComponent implements OnDestroy {
     this.controls.enableZoom = false;
     this.controls.minPolarAngle = Math.PI / 5;
     this.controls.maxPolarAngle = Math.PI / 2;
+    this.controls.minAzimuthAngle = -Math.PI / 4;
+    this.controls.maxAzimuthAngle = Math.PI / 4;
     this.controls.target.set(0, 0, 0);
 
     injectBeforeRender(() => {

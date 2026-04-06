@@ -2,7 +2,11 @@
   <app-title-header title="Why Should You Hire Me" sub="My Strengths 💡" />
   <div class="grid-3-cols">
     @for (ability of abilities; track ability.title) {
-      <article class="ability-card card-border">
+      <article
+        #cardEl
+        class="ability-card card-border card"
+        (mousemove)="updateGlow($event, cardEl)"
+      >
         <div class="ability-icon" aria-hidden="true">
           <img [src]="ability.imgPath" [alt]="ability.title + ' icon'" width="40" height="40" />
         </div>
