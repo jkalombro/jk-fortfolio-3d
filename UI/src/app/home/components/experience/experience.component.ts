@@ -84,7 +84,7 @@ export class ExperienceComponent implements AfterViewInit, OnDestroy {
         }
 
         this.timelines.forEach((tl) => {
-          tl.nativeElement.style.transformOrigin = 'bottom bottom';
+          tl.nativeElement.style.transformOrigin = 'bottom';
           gsap.to(tl.nativeElement, {
             ease: 'power1.inOut',
             scrollTrigger: {
