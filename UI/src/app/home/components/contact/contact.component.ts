@@ -31,19 +31,39 @@ export class ContactComponent {
     message: ['', Validators.required],
   });
 
+  readonly nameTouched = signal(false);
   readonly emailTouched = signal(false);
+  readonly messageTouched = signal(false);
 
+  private readonly nameValue = toSignal(this.contactForm.get('name')!.valueChanges, {
+    initialValue: '',
+  });
   private readonly emailValue = toSignal(this.contactForm.get('email')!.valueChanges, {
     initialValue: '',
+  });
+  private readonly messageValue = toSignal(this.contactForm.get('message')!.valueChanges, {
+    initialValue: '',
+  });
+
+  readonly nameError = computed(() => {
+    if (!this.nameTouched()) return null;
+    this.nameValue();
+    return this.contactForm.get('name')!.hasError('required') ? 'Name is required.' : null;
   });
 
   readonly emailError = computed(() => {
     if (!this.emailTouched()) return null;
-    this.emailValue(); // track value changes to recompute on input
+    this.emailValue();
     const ctrl = this.contactForm.get('email')!;
     if (ctrl.hasError('required')) return 'Email is required.';
     if (ctrl.hasError('pattern')) return 'Please enter a valid email address.';
     return null;
+  });
+
+  readonly messageError = computed(() => {
+    if (!this.messageTouched()) return null;
+    this.messageValue();
+    return this.contactForm.get('message')!.hasError('required') ? 'Message is required.' : null;
   });
 
   readonly loading = toSignal(this.store.select(selectContactLoading), { initialValue: false });
@@ -51,14 +71,18 @@ export class ContactComponent {
   readonly error = toSignal(this.store.select(selectContactError), { initialValue: null });
 
   onSubmit(): void {
+    this.nameTouched.set(true);
     this.emailTouched.set(true);
+    this.messageTouched.set(true);
     if (this.contactForm.invalid) return;
     this.store.dispatch(submitForm({ params: this.contactForm.value }));
   }
 
   reset(): void {
     this.contactForm.reset();
+    this.nameTouched.set(false);
     this.emailTouched.set(false);
+    this.messageTouched.set(false);
     this.store.dispatch(resetContactForm());
   }
 }

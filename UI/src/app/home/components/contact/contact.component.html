@@ -22,7 +22,12 @@
                   name="name"
                   formControlName="name"
                   placeholder="What's your good name?"
+                  [class.input-error]="nameError()"
+                  (blur)="nameTouched.set(true)"
                 />
+                @if (nameError()) {
+                  <p class="field-error">{{ nameError() }}</p>
+                }
               </div>
 
               <div class="form-field">
@@ -49,7 +54,12 @@
                   formControlName="message"
                   placeholder="How can I help you?"
                   rows="5"
+                  [class.input-error]="messageError()"
+                  (blur)="messageTouched.set(true)"
                 ></textarea>
+                @if (messageError()) {
+                  <p class="field-error">{{ messageError() }}</p>
+                }
               </div>
 
               @if (error()) {
