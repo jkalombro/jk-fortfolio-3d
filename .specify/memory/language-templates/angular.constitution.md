@@ -74,6 +74,13 @@ When creating services, components, helpers, etc. Always create the test first b
 - If rules are not defined here, always consider the global standards first when coding.
 - It should follow a self-documenting code mindset.
 
+### Dealing with magic numbers/words/conditions
+
+Magic numbers/words/conditions are those constant numbers/words/conditions that we have no context what they represent.
+Sample:
+
+- All magic numbers should be assigned to a constant variable with a name that describes it
+
 ### Code Arrangements via Access Modifiers
 
 For variables, functions, lifecycle methods, etc. Follow the arrangement below:
@@ -109,6 +116,7 @@ For variables, functions, lifecycle methods, etc. Follow the arrangement below:
 - **Framework**: Jest (not Karma/Jasmine)
 - Always TDD: write the test first based on acceptance criteria
 - 100% coverage enforced via Jest coverage thresholds in `jest.config.js`
+- Ensure that the 100% coverage thresholds is achieved
 - Cover all edge cases
 - Use Angular Testing Library alongside `TestBed` for component tests
 

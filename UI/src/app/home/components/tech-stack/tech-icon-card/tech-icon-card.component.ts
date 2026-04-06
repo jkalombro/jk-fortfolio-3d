@@ -7,7 +7,10 @@ import {
   input,
   OnDestroy,
   signal,
+  PLATFORM_ID,
+  Inject,
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { extend, loaderResource, NgtArgs } from 'angular-three';
 import { NgtCanvasImpl, NgtCanvasContent } from 'angular-three/dom';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -71,6 +74,8 @@ export class TechIconCardComponent implements OnDestroy {
   private readonly _svgGroup = signal<Group | null>(null);
   readonly svgGroup = computed(() => this._svgGroup());
 
+  readonly isMobile: boolean;
+
   private isDragging = false;
   private lastX = 0;
   private lastY = 0;
@@ -86,7 +91,10 @@ export class TechIconCardComponent implements OnDestroy {
   readonly scene = computed(() => (this.hasModel() ? (this.gltf.value()?.scene ?? null) : null));
   readonly scale = computed(() => this.icon().scale);
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) platformId: object) {
+    this.isMobile =
+      isPlatformBrowser(platformId) && window.matchMedia('(max-width: 768px)').matches;
+
     effect(() => {
       this._rotation.set([...this.icon().rotation] as [number, number, number]);
     });

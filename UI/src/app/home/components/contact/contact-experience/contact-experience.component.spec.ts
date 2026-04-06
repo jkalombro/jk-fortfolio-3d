@@ -1,9 +1,12 @@
 import { TestBed } from '@angular/core/testing';
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, input } from '@angular/core';
 import { ContactExperienceComponent } from './contact-experience.component';
 
 @Component({ selector: 'app-orbit-controls-contact', standalone: true, template: '' })
-class OrbitControlsContactStub {}
+class OrbitControlsContactStub {
+  readonly minPolarAngle = input.required<number>();
+  readonly maxPolarAngle = input.required<number>();
+}
 
 describe('ContactExperienceComponent', () => {
   beforeEach(async () => {

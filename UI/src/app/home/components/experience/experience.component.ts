@@ -7,7 +7,10 @@ import {
   OnDestroy,
   QueryList,
   ViewChildren,
+  PLATFORM_ID,
+  Inject,
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { EXP_CARDS } from '../../../shared/constants';
@@ -51,36 +54,45 @@ export class ExperienceComponent implements AfterViewInit, OnDestroy {
   @ViewChildren('timeline') timelines!: QueryList<ElementRef>;
 
   private ctx!: gsap.Context;
+  private readonly isMobile: boolean;
 
-  constructor(private readonly zone: NgZone) {}
+  constructor(
+    private readonly zone: NgZone,
+    @Inject(PLATFORM_ID) platformId: object,
+  ) {
+    this.isMobile =
+      isPlatformBrowser(platformId) && window.matchMedia('(max-width: 768px)').matches;
+  }
 
   ngAfterViewInit(): void {
     this.zone.runOutsideAngular(() => {
       this.ctx = gsap.context(() => {
-        this.timelineCards.forEach((card) => {
-          gsap.from(card.nativeElement, {
-            xPercent: -100,
-            opacity: 0,
-            transformOrigin: 'left left',
-            duration: 1,
-            ease: 'power2.inOut',
-            scrollTrigger: {
-              trigger: card.nativeElement,
-              start: 'top 80%',
-            },
+        if (!this.isMobile) {
+          this.timelineCards.forEach((card) => {
+            gsap.from(card.nativeElement, {
+              xPercent: -100,
+              opacity: 0,
+              transformOrigin: 'left left',
+              duration: 1,
+              ease: 'power2.inOut',
+              scrollTrigger: {
+                trigger: card.nativeElement,
+                start: 'top 80%',
+              },
+            });
           });
-        });
+        }
 
         this.timelines.forEach((tl) => {
+          tl.nativeElement.style.transformOrigin = 'bottom bottom';
           gsap.to(tl.nativeElement, {
-            transformOrigin: 'bottom bottom',
             ease: 'power1.inOut',
             scrollTrigger: {
               trigger: tl.nativeElement,
               start: 'top center',
               end: '70% center',
               onUpdate: (self) => {
-                gsap.to(tl.nativeElement, { scaleY: 1 - self.progress });
+                tl.nativeElement.style.transform = `scaleY(${1 - self.progress})`;
               },
             },
           });

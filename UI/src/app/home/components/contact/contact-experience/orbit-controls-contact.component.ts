@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, input, OnDestroy, OnInit } from '@angular/core';
 import { injectBeforeRender, injectStore } from 'angular-three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
@@ -7,26 +7,31 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
   standalone: true,
   template: '',
 })
-export class OrbitControlsContactComponent implements OnDestroy {
+export class OrbitControlsContactComponent implements OnInit, OnDestroy {
+  readonly minPolarAngle = input.required<number>();
+  readonly maxPolarAngle = input.required<number>();
+
   private readonly store = injectStore();
-  private readonly controls: OrbitControls;
+  private controls!: OrbitControls;
 
   constructor() {
+    injectBeforeRender(() => {
+      this.controls?.update();
+    });
+  }
+
+  ngOnInit(): void {
     const { camera, gl } = this.store.snapshot;
     this.controls = new OrbitControls(camera, gl.domElement);
     this.controls.enableDamping = true;
     this.controls.dampingFactor = 0.05;
     this.controls.enableZoom = false;
-    this.controls.minPolarAngle = Math.PI / 5;
-    this.controls.maxPolarAngle = Math.PI / 2;
+    this.controls.minPolarAngle = this.minPolarAngle();
+    this.controls.maxPolarAngle = this.maxPolarAngle();
     this.controls.target.set(0, 0, 0);
-
-    injectBeforeRender(() => {
-      this.controls.update();
-    });
   }
 
-  ngOnDestroy() {
-    this.controls.dispose();
+  ngOnDestroy(): void {
+    this.controls?.dispose();
   }
 }
