@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FooterComponent } from './footer.component';
+import { environment } from '../../../../environments/environment';
 
 describe('FooterComponent', () => {
   let fixture: ComponentFixture<FooterComponent>;
@@ -32,5 +33,11 @@ describe('FooterComponent', () => {
     expect(footer.nativeElement.textContent).toContain(
       new Date().getFullYear().toString(),
     );
+  });
+
+  it('should display version number from environment', () => {
+    const versionEl = fixture.debugElement.query(By.css('.footer-version'));
+    expect(versionEl).toBeTruthy();
+    expect(versionEl.nativeElement.textContent).toContain(environment.version);
   });
 });
