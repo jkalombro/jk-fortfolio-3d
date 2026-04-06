@@ -5,7 +5,12 @@
   (pointerup)="onPointerUp()"
   (pointerleave)="onPointerUp()"
 >
-  <ngt-canvas [camera]="{ position: [0, 0, 5], fov: 75 }" [shadows]="!isMobile">
+  <ngt-canvas
+    [camera]="{ position: [0, 0, 5], fov: 75 }"
+    [shadows]="!isMobile"
+    [frameloop]="isMobile ? 'demand' : 'always'"
+    [dpr]="isMobile ? 1 : [1, 2]"
+  >
     <ng-template canvasContent>
       <ngt-ambient-light [intensity]="isMobile ? 1.2 : 0.5" />
       <ngt-directional-light [position]="[5, 5, 5]" [intensity]="isMobile ? 1.0 : 1.5" />

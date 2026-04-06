@@ -24,10 +24,13 @@ body {
   overflow-x: hidden;
   background-color: $color-bg-primary;
   color: $color-white;
-  scroll-behavior: smooth;
   font-family: $font-family-base;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  @media (min-width: $breakpoint-md) {
+    scroll-behavior: smooth;
+  }
 }
 
 h1,
@@ -615,6 +618,7 @@ section {
   position: absolute;
   overflow: hidden;
   animation: marquee 60s linear infinite;
+  will-change: transform;
 }
 
 .marquee-item {
@@ -628,10 +632,10 @@ section {
 
 @keyframes marquee {
   0% {
-    left: 0;
+    transform: translateX(0);
   }
   100% {
-    left: -100%;
+    transform: translateX(-50%);
   }
 }
 
@@ -740,7 +744,7 @@ section {
   border-color: $color-bg-card-dark;
 
   &:hover .tech-card-animated-bg {
-    bottom: 0;
+    transform: translateY(0);
   }
 }
 
@@ -764,11 +768,12 @@ section {
 .tech-card-animated-bg {
   position: absolute;
   left: 0;
-  bottom: -100%;
+  bottom: 0;
   width: 100%;
   height: 100%;
   background-color: $color-bg-card-mid;
-  transition: bottom $transition-slower;
+  transform: translateY(100%);
+  transition: transform $transition-slower;
 }
 
 .tech-card-content {

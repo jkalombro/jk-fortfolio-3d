@@ -76,6 +76,8 @@ When creating services, components, helpers, etc. Always create the test first b
 
 ### Dealing with magic numbers/words/conditions
 
+TODO: Add more description here
+
 Magic numbers/words/conditions are those constant numbers/words/conditions that we have no context what they represent.
 Sample:
 
