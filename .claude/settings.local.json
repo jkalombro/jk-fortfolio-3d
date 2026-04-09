@@ -61,7 +61,8 @@
       "Bash(node -e \"const p = require\\('d:/Repository/jk-fortfolio-3d/UI/node_modules/jest-preset-angular/package.json'\\); console.log\\(JSON.stringify\\(p.exports, null, 2\\)\\)\")",
       "Bash(cp -r d:/Repository/jk-fortfolio-3d/UI/src/app/home/components/contact/store d:/Repository/jk-fortfolio-3d/UI/src/app/home/store)",
       "Bash(cp -r d:/Repository/jk-fortfolio-3d/UI/src/app/home/components/hero/components/animated-counter d:/Repository/jk-fortfolio-3d/UI/src/app/home/components/hero/animated-counter)",
-      "Bash(cp -r d:/Repository/jk-fortfolio-3d/UI/src/app/home/components/hero/components/hero-experience d:/Repository/jk-fortfolio-3d/UI/src/app/home/components/hero/hero-experience)"
+      "Bash(cp -r d:/Repository/jk-fortfolio-3d/UI/src/app/home/components/hero/components/hero-experience d:/Repository/jk-fortfolio-3d/UI/src/app/home/components/hero/hero-experience)",
+      "Bash(wc -l \"d:/Repository/jk-fortfolio-3d/UI/src/app/home/components\"/*/*.ts)"
     ]
   }
 }
