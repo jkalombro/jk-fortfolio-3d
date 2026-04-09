@@ -1,104 +1,104 @@
-# jk-spec-project-boilerplate
+# JK Portfolio 3D
 
-A personal project boilerplate and spec-driven development harness. Clone this repo to bootstrap any new project — constitutions, scaffolding templates, and AI-assisted workflows are all pre-wired.
+A personal developer portfolio built with **Angular 20** and **Three.js** (via angular-three), featuring an interactive 3D hero scene, animated sections, and a contact form — deployed on Netlify.
 
----
-
-## What this is
-
-This repo is the starting point for all future projects. It bundles two things together:
-
-1. **Spec-driven development workflow** (`speckit`) — a set of Claude Code slash commands that take a feature description all the way from spec → plan → tasks → implementation, with a project constitution enforcing standards at every step.
-
-2. **Pre-built scaffolding templates** (`.scaffolding/`) — opinionated project starters for specific frameworks. When you run `/create-ui-app angular my-app`, it copies the full Angular boilerplate (NgRx, feature modules, SCSS architecture, shared module, tests) rather than generating a bare `ng new` project.
+![Portfolio Preview](UI/src/assets/images/preview.png)
 
 ---
 
-## Project structure
+## Live Site
+
+Deployed via Netlify. See `netlify.toml` for build configuration.
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Angular 20 (standalone components, OnPush) |
+| State Management | NgRx 19 (Actions / Reducers / Effects) |
+| 3D Rendering | Three.js + angular-three + @angular-three/soba |
+| Animations | GSAP 3 |
+| Styling | SCSS with design token architecture |
+| Email | EmailJS |
+| Testing | Jest 30 + Angular Testing Library |
+| Linting | ESLint + @angular-eslint + Prettier |
+| Deployment | Netlify |
+
+---
+
+## Project Structure
 
 ```
 .
-├── .claude/
-│   └── commands/          # Claude Code slash commands
-├── .scaffolding/
-│   └── angular/           # Angular boilerplate template (NgRx, lazy modules, SCSS)
-├── .specify/
-│   ├── memory/            # Project constitution and framework-specific standards
-│   │   └── language-templates/
-│   ├── templates/         # Spec, plan, tasks, checklist templates
-│   └── scripts/           # Setup and context-update scripts
-├── UI/                    # Frontend application(s) live here
-└── API/                   # Backend application(s) live here
+├── UI/                         — Angular application
+│   └── src/app/
+│       ├── home/               — Single-page layout with all sections
+│       │   └── components/
+│       │       ├── navbar/
+│       │       ├── hero/       — 3D room scene (Three.js)
+│       │       ├── feature-cards/  — About Me / abilities
+│       │       ├── tech-stack/ — Animated 3D tech icons
+│       │       ├── experience/ — Work history timeline
+│       │       ├── contact/    — EmailJS contact form
+│       │       └── footer/
+│       └── shared/             — Constants, models, interceptors, helpers
+├── specs/                      — Feature specs
+├── netlify.toml                — Netlify build config
+└── CLAUDE.md                   — Project constitution + coding standards
 ```
 
 ---
 
-## Slash commands
+## Sections
 
-### Scaffolding
-
-| Command | Description |
-|---|---|
-| `/create-ui-app <framework> <name>` | Scaffold a new UI app. Uses `.scaffolding/<framework>/` template if available, otherwise bare CLI scaffold. |
-| `/create-api-app <framework> <name>` | Scaffold a new API app. Uses `.scaffolding/<framework>/` template if available, otherwise bare CLI scaffold. |
-
-### Speckit — spec-driven development
-
-| Command | Description |
-|---|---|
-| `/speckit.constitution` | Create or update the project constitution (coding standards, patterns, principles). |
-| `/speckit.specify "<description>"` | Turn a feature description into a structured spec. |
-| `/speckit.clarify` | Ask up to 5 targeted questions to fill gaps in the current spec. |
-| `/speckit.plan` | Generate an implementation plan from the spec. |
-| `/speckit.tasks` | Break the plan into a dependency-ordered task list. |
-| `/speckit.implement` | Execute the tasks one by one. |
-| `/speckit.analyze` | Cross-check spec, plan, and tasks for consistency issues. |
-| `/speckit.checklist` | Generate a feature-specific QA/review checklist. |
-| `/speckit.taskstoissues` | Convert tasks into GitHub issues. |
+- **Hero** — Animated headline with a word-cycling slot, 3D room model, and a scrolling animated counter
+- **About Me** — Feature cards highlighting key abilities (critical thinking, communication, learning)
+- **Skills** — 3D rotating tech stack icons (React, Angular, C#, Node.js, Claude Spec)
+- **Experience** — Timeline of work history with roles and responsibilities
+- **Contact** — Reactive form with EmailJS integration and field validations
+- **Footer** — Version display
 
 ---
 
-## Scaffolding templates
+## Getting Started
 
-Templates live in `.scaffolding/<framework>/` and use two placeholder tokens that get replaced at scaffold time:
+```bash
+cd UI
+npm install
+npm start        # dev server at http://localhost:4200
+npm test         # Jest with coverage
+npm run build    # production build → dist/jk-portfolio/browser
+```
 
-| Token | Replaced with |
-|---|---|
-| `__APP_NAME__` | The app name you pass to the command (e.g., `my-dashboard`) |
-| `__APP_TITLE__` | PascalCase version of the name (e.g., `MyDashboard`) |
+---
 
-### Available templates
+## Versioning
 
-| Framework | Location | Includes |
-|---|---|---|
-| Angular | `.scaffolding/angular/` | NgRx global + feature stores, lazy-loaded feature modules (home, about), shared module (badge, logger, string helpers), SCSS design token architecture |
+Format: `MAJOR.MINOR.BUILD`
 
-To add a new template: scaffold a project the way you want it, then copy it into `.scaffolding/<framework>/` with the placeholder tokens substituted in.
+### v1.0.2 — Current
+- Visual polish pass across all sections
+- Email form field validations
+- Timeline section improvements
+
+### v1.0.1
+- Mobile responsiveness fixes
+- Animated counter finalized
+- Constitution and code quality alignment
+
+### v1.0.0
+- Initial versioned release
+- Full single-page layout: Navbar → Hero → Feature Cards → Tech Stack → Experience → Contact → Footer
+- 3D hero room scene with angular-three
+- 3D tech stack icons with GSAP animations
+- Work experience timeline
+- EmailJS contact form
+- Netlify deployment with SPA redirect rules
 
 ---
 
 ## Constitution
 
-The project constitution (`.specify/memory/constitution.md`) is the source of truth for coding standards. It links to per-framework constitutions under `.specify/memory/language-templates/`.
-
-Claude reads the constitution before writing any code. Run `/speckit.constitution` to create or update it.
-
----
-
-## Getting started on a new project
-
-```bash
-# 1. Clone this boilerplate
-git clone <this-repo> my-new-project
-cd my-new-project
-
-# 2. Scaffold your UI app (uses the Angular template)
-# In Claude Code:
-/create-ui-app angular my-app
-
-# 3. Scaffold your API app (bare scaffold — add a template to .scaffolding/ to customize)
-/create-api-app dotnet my-api
-
-# 4. Define your first feature
-/speckit.specify "users can log in with email and password"
-```
+Coding standards, folder conventions, and architectural decisions are documented in [CLAUDE.md](CLAUDE.md) and `.specify/memory/constitution.md`.
