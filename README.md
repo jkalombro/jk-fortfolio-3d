@@ -1,30 +1,27 @@
-# JK Portfolio 3D
+<div align="center">
+  <img src="UI/src/assets/images/preview.png" alt="JK Portfolio 3D Preview" width="800" />
+  <h1>JK Portfolio 3D</h1>
+  <p>A personal developer portfolio built with <strong>Angular 20</strong> and <strong>Three.js</strong> (via angular-three), featuring an interactive 3D hero scene, animated sections, and a contact form — deployed on Netlify.</p>
 
-A personal developer portfolio built with **Angular 20** and **Three.js** (via angular-three), featuring an interactive 3D hero scene, animated sections, and a contact form — deployed on Netlify.
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-jkalombro3d.netlify.app-blue?style=for-the-badge)](https://jkalombro3d.netlify.app/)
 
-![Portfolio Preview](UI/src/assets/images/preview.png)
-
----
-
-## Live Site
-
-Deployed via Netlify. See `netlify.toml` for build configuration.
+</div>
 
 ---
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | Angular 20 (standalone components, OnPush) |
-| State Management | NgRx 19 (Actions / Reducers / Effects) |
-| 3D Rendering | Three.js + angular-three + @angular-three/soba |
-| Animations | GSAP 3 |
-| Styling | SCSS with design token architecture |
-| Email | EmailJS |
-| Testing | Jest 30 + Angular Testing Library |
-| Linting | ESLint + @angular-eslint + Prettier |
-| Deployment | Netlify |
+| Layer            | Technology                                     |
+| ---------------- | ---------------------------------------------- |
+| Framework        | Angular 20 (standalone components, OnPush)     |
+| State Management | NgRx 19 (Actions / Reducers / Effects)         |
+| 3D Rendering     | Three.js + angular-three + @angular-three/soba |
+| Animations       | GSAP 3                                         |
+| Styling          | SCSS with design token architecture            |
+| Email            | EmailJS                                        |
+| Testing          | Jest 30 + Angular Testing Library              |
+| Linting          | ESLint + @angular-eslint + Prettier            |
+| Deployment       | Netlify                                        |
 
 ---
 
@@ -79,16 +76,19 @@ npm run build    # production build → dist/jk-portfolio/browser
 Format: `MAJOR.MINOR.BUILD`
 
 ### v1.0.2 — Current
+
 - Visual polish pass across all sections
 - Email form field validations
 - Timeline section improvements
 
 ### v1.0.1
+
 - Mobile responsiveness fixes
 - Animated counter finalized
 - Constitution and code quality alignment
 
 ### v1.0.0
+
 - Initial versioned release
 - Full single-page layout: Navbar → Hero → Feature Cards → Tech Stack → Experience → Contact → Footer
 - 3D hero room scene with angular-three

@@ -62,7 +62,9 @@
       "Bash(cp -r d:/Repository/jk-fortfolio-3d/UI/src/app/home/components/contact/store d:/Repository/jk-fortfolio-3d/UI/src/app/home/store)",
       "Bash(cp -r d:/Repository/jk-fortfolio-3d/UI/src/app/home/components/hero/components/animated-counter d:/Repository/jk-fortfolio-3d/UI/src/app/home/components/hero/animated-counter)",
       "Bash(cp -r d:/Repository/jk-fortfolio-3d/UI/src/app/home/components/hero/components/hero-experience d:/Repository/jk-fortfolio-3d/UI/src/app/home/components/hero/hero-experience)",
-      "Bash(wc -l \"d:/Repository/jk-fortfolio-3d/UI/src/app/home/components\"/*/*.ts)"
+      "Bash(wc -l \"d:/Repository/jk-fortfolio-3d/UI/src/app/home/components\"/*/*.ts)",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('name:', d.get\\('name',''\\)\\)\")",
+      "Bash(git remote:*)"
     ]
   }
 }
